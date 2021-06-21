@@ -28,6 +28,7 @@ namespace QLBH_API.Forms
             // load list
 
             loadToTable();
+           
 
         }
         public void loadToTable()
@@ -44,7 +45,30 @@ namespace QLBH_API.Forms
             //MessageBox.Show(gridControl_NhanVien.DataSource.ToString());
             gridControl_NhanVien.DataSource = listNhanVien;
             gridView1.PopulateColumns();
+
+            gridView1.Columns["id"].Caption = "ID";
+            gridView1.Columns["diaChi"].Caption = "Địa chỉ";
+            gridView1.Columns["email"].Caption = "Email";
+            gridView1.Columns["sdt"].Caption = "Số điện thoại";
+            gridView1.Columns["hoTen"].Caption = "Họ tên";
+            gridView1.Columns["matKhau"].Caption = "Mật khẩu";
+
+            gridView1.Columns["id"].OptionsColumn.AllowEdit = false;
+            gridView1.Columns["diaChi"].OptionsColumn.AllowEdit = false;
+            gridView1.Columns["email"].OptionsColumn.AllowEdit = false;
+            gridView1.Columns["sdt"].OptionsColumn.AllowEdit = false;
+            gridView1.Columns["hoTen"].OptionsColumn.AllowEdit = false;
+            gridView1.Columns["matKhau"].OptionsColumn.AllowEdit = false;
+        }
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
             
+            NhanVien nhanVien = (NhanVien) gridView1.GetFocusedValue();
+
+            if (nhanVien == null) return;
+
+            textBox_ID.Text = nhanVien.id;
         }
     }
 }

@@ -9,8 +9,8 @@ namespace QLBH_API.Entity
     class NhanVien
     {
         public string id { get; set; }
-        public string matKhau { get; set; }
         public string hoTen { get; set; }
+        public string matKhau { get; set; }
         public string sdt { get; set; }
         public string diaChi { get; set; }
         public string email { get; set; }

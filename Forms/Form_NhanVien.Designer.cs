@@ -31,6 +31,7 @@ namespace QLBH_API.Forms
         {
             this.gridControl_NhanVien = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox_input = new System.Windows.Forms.GroupBox();
             this.richTextBox_DiaChi = new System.Windows.Forms.RichTextBox();
             this.textBox_Password = new System.Windows.Forms.TextBox();
@@ -63,8 +64,18 @@ namespace QLBH_API.Forms
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1});
             this.gridView1.GridControl = this.gridControl_NhanVien;
             this.gridView1.Name = "gridView1";
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // groupBox_input
             // 
@@ -244,5 +255,6 @@ namespace QLBH_API.Forms
         private System.Windows.Forms.TextBox textBox_Quyen;
         private System.Windows.Forms.TextBox textBox_Email;
         private System.Windows.Forms.TextBox textBox_SoDienThoai;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
