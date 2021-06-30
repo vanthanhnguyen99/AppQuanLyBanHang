@@ -15,6 +15,7 @@ namespace QLBH_API.Services
 
         string url = Program.baseURL + "nhanvien";
         public static string errorMessage = "";
+        public static string errorCode;
         
         public List<NhanVien> getListNhanVien()
         {
@@ -36,6 +37,7 @@ namespace QLBH_API.Services
         {
             WebClient client = new WebClient();
             NhanVien nhanVien = null;
+            client.Encoding = System.Text.Encoding.UTF8;
 
             try
             {
@@ -49,12 +51,87 @@ namespace QLBH_API.Services
                 {
                     string responseContent = r.ReadToEnd();
                     errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
                     Console.WriteLine(errorMessage);
                 }
             }
 
             return nhanVien;
 
+        }
+        public bool insertNhanVien(NhanVien nhanVien)
+        {
+            WebClient client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            try
+            {
+                string res = client.UploadString(url, "POST", JsonConvert.SerializeObject(nhanVien));
+                return true;
+            }
+            catch (WebException e)
+            {
+                using (StreamReader r = new StreamReader(
+                    e.Response.GetResponseStream()))
+                {
+                    string responseContent = r.ReadToEnd();
+                    errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
+                    Console.WriteLine(errorMessage);
+                    return false;
+                }
+            }
+
+        }
+        public bool deleteNhanVien(String id)
+        {
+            WebClient client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            try
+            {
+                string res = client.UploadString(url + "/" + string.Format(id), "DELETE","");
+                return true;
+            }
+            catch (WebException e)
+            {
+                using (StreamReader r = new StreamReader(
+                    e.Response.GetResponseStream()))
+                {
+                    string responseContent = r.ReadToEnd();
+                    errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
+                    Console.WriteLine(errorMessage);
+                    return false;
+                }
+            }
+        }
+
+        public bool updateNhanVien(NhanVien nhanVien)
+        {
+            WebClient client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            try
+            {
+                string res = client.UploadString(url, "PUT", JsonConvert.SerializeObject(nhanVien));
+                return true;
+            }
+            catch (WebException e)
+            {
+                using (StreamReader r = new StreamReader(
+                    e.Response.GetResponseStream()))
+                {
+                    string responseContent = r.ReadToEnd();
+                    errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
+                    Console.WriteLine(errorMessage);
+                    return false;
+                }
+            }
         }
     }
 }

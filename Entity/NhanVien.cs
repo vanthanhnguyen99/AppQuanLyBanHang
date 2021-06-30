@@ -14,6 +14,7 @@ namespace QLBH_API.Entity
         public string sdt { get; set; }
         public string diaChi { get; set; }
         public string email { get; set; }
+        public bool quyen { get; set; }
 
         public void chuanHoaDuLieu()
         {
