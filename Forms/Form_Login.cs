@@ -35,7 +35,7 @@ namespace QLBH_API.Form
 
             int role = new Service_Login().login(login);
 
-            new Service_NhanVien().getNhanVien("1231231");
+ 
             switch (role)
             {
                 case -1:

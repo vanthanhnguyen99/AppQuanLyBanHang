@@ -231,9 +231,9 @@ namespace QLBH_API.Forms
 
         private void barButtonItem_Ghi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (textBox_Email.Text.Length == 0)
+            if (!ValidationData.checkEmail(textBox_Email.Text.Trim()))
             {
-                MessageBox.Show("Không để trống để trống email", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Địa chỉ email trống hoặc không đúng định dạng", "Thông báo", MessageBoxButtons.OK);
                 return;
             }
             if (textBox_HoTen.Text.Length == 0)

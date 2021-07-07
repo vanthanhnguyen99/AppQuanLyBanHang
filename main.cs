@@ -101,5 +101,21 @@ namespace QLBH_API
                 f.Show();
             }
         }
+
+        private void barButtonItem_HangHoa_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            System.Windows.Forms.Form frm = this.checkExist(typeof(Form_HangHoa));
+            if (frm != null)
+            {
+                frm.Activate();
+                frm.Show();
+            }
+            else
+            {
+                Form_HangHoa f = new Form_HangHoa();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

@@ -99,3 +99,4 @@ C:\C#\QLBH_API\QLBH_API\bin\Debug\de\DevExpress.Office.v19.2.Core.resources.dll
 C:\C#\QLBH_API\QLBH_API\bin\Debug\es\DevExpress.Office.v19.2.Core.resources.dll
 C:\C#\QLBH_API\QLBH_API\bin\Debug\ja\DevExpress.Office.v19.2.Core.resources.dll
 C:\C#\QLBH_API\QLBH_API\bin\Debug\ru\DevExpress.Office.v19.2.Core.resources.dll
+C:\C#\QLBH_API\QLBH_API\obj\Debug\QLBH_API.Forms.Form_HangHoa.resources

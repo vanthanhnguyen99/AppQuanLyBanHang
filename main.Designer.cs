@@ -112,6 +112,7 @@ namespace QLBH_API
             this.barButtonItem_HangHoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_HangHoa.ImageOptions.Image")));
             this.barButtonItem_HangHoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_HangHoa.ImageOptions.LargeImage")));
             this.barButtonItem_HangHoa.Name = "barButtonItem_HangHoa";
+            this.barButtonItem_HangHoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_HangHoa_ItemClick);
             // 
             // barButtonItem2
             // 

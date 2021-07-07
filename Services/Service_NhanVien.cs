@@ -19,17 +19,30 @@ namespace QLBH_API.Services
         
         public List<NhanVien> getListNhanVien()
         {
-            List<NhanVien> nhanViens;
+            List<NhanVien> nhanViens = null;
 
             WebClient wc = new WebClient();
             wc.Encoding = System.Text.Encoding.UTF8;
- 
-            string data = wc.DownloadString(url);
+            try
+            {
+                string data = wc.DownloadString(url);
 
-            Console.WriteLine(data);
+                Console.WriteLine(data);
 
-            nhanViens = JsonConvert.DeserializeObject<List<NhanVien>>(data);
+                nhanViens = JsonConvert.DeserializeObject<List<NhanVien>>(data);
 
+            }
+            catch (WebException e)
+            {
+                using (StreamReader r = new StreamReader(
+                    e.Response.GetResponseStream()))
+                {
+                    string responseContent = r.ReadToEnd();
+                    errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
+                    Console.WriteLine(errorMessage);
+                }
+            }
             return nhanViens;
         }
 

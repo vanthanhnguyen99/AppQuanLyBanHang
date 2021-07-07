@@ -4,7 +4,10 @@ using QLBH_API.Entity;
 using QLBH_API.Form;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -16,8 +19,8 @@ namespace QLBH_API
         /// The main entry point for the application.
         /// </summary>
 
-        public static string baseURL = "https://quan-ly-ban-hang-api.herokuapp.com/";
-        //public static string baseURL = "http://127.0.0.1:8080/";
+        //public static string baseURL = "https://quan-ly-ban-hang-api.herokuapp.com/";
+        public static string baseURL = "http://192.168.1.100:8080/";
         public static main form_main;
         public static string convertToUTF8(string data)
         {
@@ -26,6 +29,27 @@ namespace QLBH_API
             byte[] utfBytes = utf8.GetBytes(data);
             data = utf8.GetString(utfBytes, 0, utfBytes.Length);
             return data;
+        }
+        public static Bitmap loadImage(string url)
+        {
+            WebClient client = new WebClient();
+            Stream stream = client.OpenRead(url);
+            Bitmap bitmap = new Bitmap(stream);
+
+            stream.Flush();
+            stream.Close();
+            client.Dispose();
+
+            return bitmap;
+        }
+        public static Bitmap resizeImage(Bitmap bitmap, int width, int height)
+        {
+            Bitmap res = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(res))
+            {
+                g.DrawImage(bitmap, 0, 0, width, height);
+            }
+            return res;
         }
         [STAThread]
         static void Main()

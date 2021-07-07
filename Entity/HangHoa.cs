@@ -8,11 +8,11 @@ namespace QLBH_API.Entity
 {
     class HangHoa
     {
-        string id { get; set; }
-        string ten { get; set; }
-        string moTa { get; set; }
-        string anh { get; set; }
-        int soLuongTon { get; set; }
-        string khoiLuong { get; set; }
+        public string id { get; set; }
+        public string ten { get; set; }
+        public string moTa { get; set; }
+        public string anh { get; set; }
+        public int soLuongTon { get; set; }
+        public string khoiLuong { get; set; }
     }
 }
