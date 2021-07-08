@@ -259,10 +259,6 @@ namespace QLBH_API.Forms
             }
 
 
-
-
-
-
             if (!isEdit)
             {
                 if (textBox_Email.Focused)

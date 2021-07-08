@@ -60,7 +60,13 @@ namespace QLBH_API
                     }
             }    
         }
-
+        public void closeAllForm()
+        {
+            foreach (System.Windows.Forms.Form f in this.MdiChildren)
+            {
+                if (f.GetType() != typeof(Form_Login)) f.Close();
+            }
+        }
         private System.Windows.Forms.Form checkExist(Type ftype)
         {
             foreach (System.Windows.Forms.Form f in this.MdiChildren)

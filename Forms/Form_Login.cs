@@ -72,7 +72,9 @@ namespace QLBH_API.Form
 
                         break;
                     }
+                    
             }
+            Program.form_main.closeAllForm();
         }
     }
 }

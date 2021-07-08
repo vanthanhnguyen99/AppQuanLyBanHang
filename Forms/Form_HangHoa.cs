@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraEditors;
+using QLBH_API.Entity;
+using QLBH_API.Form;
 using QLBH_API.Services;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,8 @@ namespace QLBH_API.Forms
     public partial class Form_HangHoa : DevExpress.XtraEditors.XtraForm
     {
         BindingList<Entity.HangHoa> listHangHoa;
+        HangHoa hangHoaEdit;
+        bool isEdit = true;
         public Form_HangHoa()
         {
             InitializeComponent();
@@ -23,6 +27,32 @@ namespace QLBH_API.Forms
         private void Form_HangHoa_Load(object sender, EventArgs e)
         {
             fillData();
+            groupBox_input.Enabled = false;
+            gridControl_HangHoa.Enabled = true;
+            
+            switch (Form_Login.role) 
+            {
+                case 0: // nhân viên
+                    {
+                        barButtonItem_Them.Enabled = true;
+                        barButtonItem_Xoa.Enabled = true;
+                        barButtonItem_Sua.Enabled = true;
+                        barButtonItem_Ghi.Enabled = false;
+                        barButtonItem_Thoat.Enabled = false;
+                        MessageBox.Show("Nhân viên");
+                        break;
+                    }
+                case 1: // admin
+                    {
+                        barButtonItem_Them.Enabled = false;
+                        barButtonItem_Xoa.Enabled = false;
+                        barButtonItem_Sua.Enabled = false;
+                        barButtonItem_Ghi.Enabled = false;
+                        barButtonItem_Thoat.Enabled = false;
+                        break;
+                    }
+            }
+            
         }
         private void fillData()
         {
@@ -56,12 +86,135 @@ namespace QLBH_API.Forms
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            
-            string name = gridView1.GetFocusedRowCellValue(gridView1.Columns["anh"]).ToString();
-            Bitmap bitmap = Program.loadImage(Program.baseURL + string.Format("/img/" + name));
+            if (!isEdit) return;
 
-            pictureBox_anh.Image = Program.resizeImage(bitmap, pictureBox_anh.Width, pictureBox_anh.Height);
+            if (gridView1.GetFocusedRowCellValue(gridView1.Columns["anh"]) != null)
+            {
+                string name = gridView1.GetFocusedRowCellValue(gridView1.Columns["anh"]).ToString();
+                Bitmap bitmap = Program.loadImage(Program.baseURL + string.Format("/img/" + name));
+
+                pictureBox_anh.Image = Program.resizeImage(bitmap, pictureBox_anh.Width, pictureBox_anh.Height);
+            }
+            else
+            {
+                pictureBox_anh.Image = null;
+            }
+
+            textBox_ID.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
+            textBox_Ten.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["ten"]).ToString();
+            textBox_KhoiLuong.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["khoiLuong"]).ToString();
+            textBox_SoLuongTon.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["soLuongTon"]).ToString();
+            richTextBox_MoTa.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["moTa"]).ToString();
                 
+        }
+
+        private void barButtonItem_Them_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            isEdit = false;
+
+            barButtonItem_Them.Enabled = false;
+            barButtonItem_Xoa.Enabled = false;
+            barButtonItem_Sua.Enabled = false;
+            barButtonItem_Ghi.Enabled = true;
+            barButtonItem_Thoat.Enabled = true;
+
+            gridControl_HangHoa.Enabled = false;
+            groupBox_input.Enabled = true;
+
+            gridView1.AddNewRow();
+            
+            hangHoaEdit = new HangHoa();
+            int soluong = new Service_HangHoa().getListHangHoa().Count;
+            if (soluong < 10)
+            {
+                textBox_ID.Text = "HH00" + soluong;
+            }
+            else
+            {
+                if (soluong < 100)
+                {
+                    textBox_ID.Text = "HH0" + soluong;
+                }
+                else
+                {
+                    textBox_ID.Text = "HH" + soluong;
+                }
+            }
+            hangHoaEdit.id = textBox_ID.Text;
+            hangHoaEdit.soLuongTon = 0;
+
+            textBox_SoLuongTon.Text = "0";
+            textBox_KhoiLuong.Text = "";
+            textBox_Ten.Text = "";
+            richTextBox_MoTa.Text = "";
+
+        }
+
+        private void textBox_Ten_Leave(object sender, EventArgs e)
+        {
+            if (hangHoaEdit == null) return;
+            hangHoaEdit.ten = textBox_Ten.Text;
+            gridView1.SetFocusedRowCellValue(gridView1.Columns["ten"], textBox_Ten.Text);
+        }
+
+        private void textBox_KhoiLuong_Leave(object sender, EventArgs e)
+        {
+            if (hangHoaEdit == null) return;
+            hangHoaEdit.khoiLuong = textBox_KhoiLuong.Text;
+            gridView1.SetFocusedRowCellValue(gridView1.Columns["khoiLuong"], textBox_KhoiLuong.Text);
+        }
+
+        private void richTextBox_MoTa_Leave(object sender, EventArgs e)
+        {
+            if (hangHoaEdit == null) return;
+            hangHoaEdit.moTa = richTextBox_MoTa.Text;
+            gridView1.SetFocusedRowCellValue(gridView1.Columns["moTa"], richTextBox_MoTa.Text);
+        }
+
+        private void barButtonItem_Ghi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void pictureBox_anh_Click(object sender, EventArgs e)
+        {
+            // check is edit??
+            // load ảnh
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp;*.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox_anh.Image = Program.resizeImage(new Bitmap(open.FileName), pictureBox_anh.Width, pictureBox_anh.Height);
+            }
+        }
+
+        private void barButtonItem_Thoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            isEdit = true;
+            gridView1.DeleteSelectedRows();
+            hangHoaEdit = null;
+            
+            if (gridView1.RowCount > 0)
+            {
+                gridView1.FocusedRowHandle = 0;
+            }
+            else
+            {
+                textBox_ID.Text = "";
+                textBox_Ten.Text = "";
+                textBox_KhoiLuong.Text = "";
+                textBox_SoLuongTon.Text = "";
+                richTextBox_MoTa.Text = "";
+            }
+
+            barButtonItem_Them.Enabled = true;
+            barButtonItem_Xoa.Enabled = true;
+            barButtonItem_Sua.Enabled = true;
+            barButtonItem_Ghi.Enabled = false;
+            barButtonItem_Thoat.Enabled = false;
+
+            gridControl_HangHoa.Enabled = true;
+            groupBox_input.Enabled = false;
         }
     }
 }

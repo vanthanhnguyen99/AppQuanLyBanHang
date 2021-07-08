@@ -123,41 +123,41 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label_DangNhap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>820, 49</value>
+    <value>319, 48</value>
   </data>
   <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>565, 155</value>
+    <value>152, 157</value>
   </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>565, 273</value>
+    <value>152, 275</value>
   </data>
   <data name="textBox_ID.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="textBox_ID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>698, 152</value>
+    <value>285, 154</value>
   </data>
   <data name="textBox_ID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 30</value>
+    <value>284, 30</value>
   </data>
   <data name="textBox_password.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="textBox_password.Location" type="System.Drawing.Point, System.Drawing">
-    <value>698, 270</value>
+    <value>295, 272</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBox_password.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
   </data>
   <data name="textBox_password.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 30</value>
+    <value>274, 30</value>
   </data>
   <data name="textBox_password.Text" xml:space="preserve">
     <value> </value>
@@ -169,9 +169,9 @@
     <value>802, 356</value>
   </data>
   <data name="button_DangNhap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 38</value>
+    <value>0, 48</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1598, 671</value>
+    <value>810, 425</value>
   </data>
 </root>
