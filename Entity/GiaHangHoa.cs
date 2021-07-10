@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace QLBH_API.Entity
 {
-    class CtGiaNiemYet
+    class GiaHangHoa
     {
-        public string ngayApDung { get; set; }
-        public int gia { get; set; }
-        public string idHH { get; set; }
-
+        public string id { get; set; }
+        public Int64 gia { get; set; }
     }
 }

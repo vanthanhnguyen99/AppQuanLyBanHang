@@ -32,6 +32,8 @@ namespace QLBH_API.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_HangHoa));
             this.groupBox_input = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox_Gia = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,6 +59,7 @@ namespace QLBH_API.Forms
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem_Refresh = new DevExpress.XtraBars.BarButtonItem();
             this.groupBox_input.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_anh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_HangHoa)).BeginInit();
@@ -66,6 +69,8 @@ namespace QLBH_API.Forms
             // 
             // groupBox_input
             // 
+            this.groupBox_input.Controls.Add(this.label5);
+            this.groupBox_input.Controls.Add(this.textBox_Gia);
             this.groupBox_input.Controls.Add(this.label4);
             this.groupBox_input.Controls.Add(this.label3);
             this.groupBox_input.Controls.Add(this.label2);
@@ -77,17 +82,33 @@ namespace QLBH_API.Forms
             this.groupBox_input.Controls.Add(this.label);
             this.groupBox_input.Controls.Add(this.textBox_ID);
             this.groupBox_input.Controls.Add(this.pictureBox_anh);
-            this.groupBox_input.Location = new System.Drawing.Point(26, 419);
+            this.groupBox_input.Location = new System.Drawing.Point(26, 401);
             this.groupBox_input.Name = "groupBox_input";
-            this.groupBox_input.Size = new System.Drawing.Size(1180, 267);
+            this.groupBox_input.Size = new System.Drawing.Size(1180, 285);
             this.groupBox_input.TabIndex = 1;
             this.groupBox_input.TabStop = false;
             this.groupBox_input.Text = "Hàng hóa";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(404, 144);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Giá";
+            // 
+            // textBox_Gia
+            // 
+            this.textBox_Gia.Location = new System.Drawing.Point(469, 136);
+            this.textBox_Gia.Name = "textBox_Gia";
+            this.textBox_Gia.Size = new System.Drawing.Size(215, 21);
+            this.textBox_Gia.TabIndex = 11;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(404, 190);
+            this.label4.Location = new System.Drawing.Point(406, 217);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 10;
@@ -96,7 +117,7 @@ namespace QLBH_API.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(773, 107);
+            this.label3.Location = new System.Drawing.Point(773, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 9;
@@ -121,24 +142,25 @@ namespace QLBH_API.Forms
             // 
             // textBox_SoLuongTon
             // 
+            this.textBox_SoLuongTon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_SoLuongTon.Enabled = false;
-            this.textBox_SoLuongTon.Location = new System.Drawing.Point(847, 99);
+            this.textBox_SoLuongTon.Location = new System.Drawing.Point(847, 83);
             this.textBox_SoLuongTon.Name = "textBox_SoLuongTon";
             this.textBox_SoLuongTon.Size = new System.Drawing.Size(195, 21);
             this.textBox_SoLuongTon.TabIndex = 6;
             // 
             // richTextBox_MoTa
             // 
-            this.richTextBox_MoTa.Location = new System.Drawing.Point(469, 155);
+            this.richTextBox_MoTa.Location = new System.Drawing.Point(469, 177);
             this.richTextBox_MoTa.Name = "richTextBox_MoTa";
-            this.richTextBox_MoTa.Size = new System.Drawing.Size(573, 88);
+            this.richTextBox_MoTa.Size = new System.Drawing.Size(573, 89);
             this.richTextBox_MoTa.TabIndex = 5;
             this.richTextBox_MoTa.Text = "";
             this.richTextBox_MoTa.Leave += new System.EventHandler(this.richTextBox_MoTa_Leave);
             // 
             // textBox_KhoiLuong
             // 
-            this.textBox_KhoiLuong.Location = new System.Drawing.Point(469, 102);
+            this.textBox_KhoiLuong.Location = new System.Drawing.Point(469, 86);
             this.textBox_KhoiLuong.Name = "textBox_KhoiLuong";
             this.textBox_KhoiLuong.Size = new System.Drawing.Size(215, 21);
             this.textBox_KhoiLuong.TabIndex = 4;
@@ -148,7 +170,7 @@ namespace QLBH_API.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(383, 102);
+            this.label1.Location = new System.Drawing.Point(383, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 3;
@@ -173,6 +195,7 @@ namespace QLBH_API.Forms
             // 
             // pictureBox_anh
             // 
+            this.pictureBox_anh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox_anh.Location = new System.Drawing.Point(28, 20);
             this.pictureBox_anh.Name = "pictureBox_anh";
             this.pictureBox_anh.Size = new System.Drawing.Size(304, 236);
@@ -211,9 +234,10 @@ namespace QLBH_API.Forms
             this.barButtonItem_Xoa,
             this.barButtonItem_Sua,
             this.barButtonItem_Ghi,
-            this.barButtonItem_Thoat});
+            this.barButtonItem_Thoat,
+            this.barButtonItem_Refresh});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 6;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -228,7 +252,8 @@ namespace QLBH_API.Forms
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Xoa),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Sua),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Ghi),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Thoat)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Thoat),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Refresh)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -251,6 +276,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_Xoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Xoa.ImageOptions.LargeImage")));
             this.barButtonItem_Xoa.Name = "barButtonItem_Xoa";
             this.barButtonItem_Xoa.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_Xoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Xoa_ItemClick);
             // 
             // barButtonItem_Sua
             // 
@@ -325,6 +351,16 @@ namespace QLBH_API.Forms
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 658);
             // 
+            // barButtonItem_Refresh
+            // 
+            this.barButtonItem_Refresh.Caption = "Refresh";
+            this.barButtonItem_Refresh.Id = 5;
+            this.barButtonItem_Refresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Refresh.ImageOptions.Image")));
+            this.barButtonItem_Refresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Refresh.ImageOptions.LargeImage")));
+            this.barButtonItem_Refresh.Name = "barButtonItem_Refresh";
+            this.barButtonItem_Refresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_Refresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Refresh_ItemClick);
+            // 
             // Form_HangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,7 +373,7 @@ namespace QLBH_API.Forms
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Form_HangHoa";
-            this.Text = "Form_HangHoa";
+            this.Text = "Hàng hóa";
             this.Load += new System.EventHandler(this.Form_HangHoa_Load);
             this.groupBox_input.ResumeLayout(false);
             this.groupBox_input.PerformLayout();
@@ -377,5 +413,8 @@ namespace QLBH_API.Forms
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox_Gia;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_Refresh;
     }
 }

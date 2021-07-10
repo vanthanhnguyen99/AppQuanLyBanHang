@@ -35,5 +35,17 @@ namespace QLBH_API.Validation
                 return false;
             }
         }
+        public static bool checkSoDuong(string number)
+        {
+            try
+            {
+                Int64.Parse(number);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

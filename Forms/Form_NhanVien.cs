@@ -360,7 +360,8 @@ namespace QLBH_API.Forms
                     barButtonItem_Thoat.Enabled = false;
 
                     return;
-                }    
+                }   
+                else
                 if (Service_NhanVien.errorCode.Equals("5"))
                 {
                     MessageBox.Show("Không thể xóa mẫu tin này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
