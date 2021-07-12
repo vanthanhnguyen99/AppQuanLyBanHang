@@ -54,12 +54,12 @@ namespace QLBH_API.Forms
             this.barButtonItem_Sua = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Ghi = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Thoat = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_Refresh = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barButtonItem_Refresh = new DevExpress.XtraBars.BarButtonItem();
             this.groupBox_input.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_anh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_HangHoa)).BeginInit();
@@ -286,6 +286,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_Sua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Sua.ImageOptions.LargeImage")));
             this.barButtonItem_Sua.Name = "barButtonItem_Sua";
             this.barButtonItem_Sua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_Sua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Sua_ItemClick);
             // 
             // barButtonItem_Ghi
             // 
@@ -306,6 +307,16 @@ namespace QLBH_API.Forms
             this.barButtonItem_Thoat.Name = "barButtonItem_Thoat";
             this.barButtonItem_Thoat.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Thoat_ItemClick);
+            // 
+            // barButtonItem_Refresh
+            // 
+            this.barButtonItem_Refresh.Caption = "Refresh";
+            this.barButtonItem_Refresh.Id = 5;
+            this.barButtonItem_Refresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Refresh.ImageOptions.Image")));
+            this.barButtonItem_Refresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Refresh.ImageOptions.LargeImage")));
+            this.barButtonItem_Refresh.Name = "barButtonItem_Refresh";
+            this.barButtonItem_Refresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_Refresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Refresh_ItemClick);
             // 
             // bar3
             // 
@@ -350,16 +361,6 @@ namespace QLBH_API.Forms
             this.barDockControlRight.Location = new System.Drawing.Point(1234, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 658);
-            // 
-            // barButtonItem_Refresh
-            // 
-            this.barButtonItem_Refresh.Caption = "Refresh";
-            this.barButtonItem_Refresh.Id = 5;
-            this.barButtonItem_Refresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Refresh.ImageOptions.Image")));
-            this.barButtonItem_Refresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Refresh.ImageOptions.LargeImage")));
-            this.barButtonItem_Refresh.Name = "barButtonItem_Refresh";
-            this.barButtonItem_Refresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem_Refresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Refresh_ItemClick);
             // 
             // Form_HangHoa
             // 

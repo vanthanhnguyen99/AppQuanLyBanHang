@@ -14,9 +14,9 @@ namespace QLBH_API.Entity
         {
             listError = new Dictionary<string, string>();
             listError.Clear();
-            listError.Add("1", "Lỗi trùng khóa chính");
+            listError.Add("1", "Đối tượng đã tồn tại. Vui lòng thử lại sau");
             listError.Add("2", "Lỗi server");
-            listError.Add("3", "Không tìm thấy mẫu tin");
+            listError.Add("3", "Không tìm thấy đối tượng phù hợp");
             listError.Add("4", "Đường dẫn sai");
             listError.Add("5", "Không thể xóa");
         }

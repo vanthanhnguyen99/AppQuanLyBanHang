@@ -179,6 +179,7 @@ namespace QLBH_API.Forms
         private void textBox_Ten_Leave(object sender, EventArgs e)
         {
             if (hangHoaEdit == null) return;
+            if (isEdit) return;
             hangHoaEdit.ten = textBox_Ten.Text;
             gridView1.SetFocusedRowCellValue(gridView1.Columns["ten"], textBox_Ten.Text);
         }
@@ -186,6 +187,7 @@ namespace QLBH_API.Forms
         private void textBox_KhoiLuong_Leave(object sender, EventArgs e)
         {
             if (hangHoaEdit == null) return;
+            if (isEdit) return;
             hangHoaEdit.khoiLuong = textBox_KhoiLuong.Text;
             gridView1.SetFocusedRowCellValue(gridView1.Columns["khoiLuong"], textBox_KhoiLuong.Text);
         }
@@ -193,6 +195,7 @@ namespace QLBH_API.Forms
         private void richTextBox_MoTa_Leave(object sender, EventArgs e)
         {
             if (hangHoaEdit == null) return;
+            if (isEdit) return;
             hangHoaEdit.moTa = richTextBox_MoTa.Text;
             gridView1.SetFocusedRowCellValue(gridView1.Columns["moTa"], richTextBox_MoTa.Text);
         }
@@ -226,82 +229,144 @@ namespace QLBH_API.Forms
             }
 
             Int64 gia = Int64.Parse(textBox_Gia.Text.Trim());
-
-            // save data
-            if (textBox_Ten.Focused)
+            if (!isEdit) // Thêm
             {
-                hangHoaEdit.ten = textBox_Ten.Text.Trim();
-            }
-            if (textBox_KhoiLuong.Focused)
-            {
-                hangHoaEdit.khoiLuong = textBox_KhoiLuong.Text.Trim();
-            }
-            if (richTextBox_MoTa.Focused)
-            {
-                hangHoaEdit.moTa = richTextBox_MoTa.Text.Trim();
-            }
-            hangHoaEdit.anh = new Service_HangHoa().uploadImage(path);
-            if (hangHoaEdit.anh == null)
-            {
-                MessageBox.Show("Lỗi kết nối server", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            gridView1.SetFocusedRowCellValue(gridView1.Columns["anh"], hangHoaEdit.anh);
-
-            hangHoaEdit.khoiLuong = hangHoaEdit.khoiLuong + "G";
-            if (!new Service_HangHoa().insertHangHoa(hangHoaEdit))
-            {
-                switch (Service_HangHoa.errorCode)
+                // save data
+                if (textBox_Ten.Focused)
                 {
-                    case "1":
-                        {
-                            MessageBox.Show("Lỗi khóa chính. Vui lòng thử lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            int soluong = new Service_HangHoa().getListHangHoa().Count;
-                            if (soluong < 10)
-                            {
-                                textBox_ID.Text = "HH00" + soluong;
-                            }
-                            else
-                            {
-                                if (soluong < 100)
-                                {
-                                    textBox_ID.Text = "HH0" + soluong;
-                                }
-                                else
-                                {
-                                    textBox_ID.Text = "HH" + soluong;
-                                }
-                            }
-                            hangHoaEdit.id = textBox_ID.Text;
-
-                            return;
-                        }
-                    case "2":
-                        {
-                            MessageBox.Show("Lỗi kêt nối máy chủ. Vui lòng thử lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                    hangHoaEdit.ten = textBox_Ten.Text.Trim();
                 }
-                MessageBox.Show("Đã có lỗi xãy ra");
-                return;
-            }
-          
-            // insert gian niem yet
-            CtGiaNiemYet ctGiaNiemYet = new CtGiaNiemYet();
-            ctGiaNiemYet.gia = (int)gia;
-            ctGiaNiemYet.idHH = hangHoaEdit.id;
-            ctGiaNiemYet.ngayApDung = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-            if (!new Service_ChiTietGiaNiemYet().insertChitietNiemYet(ctGiaNiemYet))
-            {
-                // delete hang hoa
-                MessageBox.Show("Đã có lỗi trong quá trình truyền dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (!new Service_HangHoa().deleteHangHoa(ctGiaNiemYet.idHH))
+                if (textBox_KhoiLuong.Focused)
+                {
+                    hangHoaEdit.khoiLuong = textBox_KhoiLuong.Text.Trim();
+                }
+                if (richTextBox_MoTa.Focused)
+                {
+                    hangHoaEdit.moTa = richTextBox_MoTa.Text.Trim();
+                }
+                hangHoaEdit.anh = new Service_HangHoa().uploadImage(path);
+                if (hangHoaEdit.anh == null)
                 {
                     MessageBox.Show("Lỗi kết nối server", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                return;
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["anh"], hangHoaEdit.anh);
+
+                hangHoaEdit.khoiLuong = hangHoaEdit.khoiLuong + "G";
+                if (!new Service_HangHoa().insertHangHoa(hangHoaEdit))
+                {
+                    switch (Service_HangHoa.errorCode)
+                    {
+                        case "1":
+                            {
+                                MessageBox.Show("Lỗi khóa chính. Vui lòng thử lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                int soluong = new Service_HangHoa().getListHangHoa().Count;
+                                if (soluong < 10)
+                                {
+                                    textBox_ID.Text = "HH00" + soluong;
+                                }
+                                else
+                                {
+                                    if (soluong < 100)
+                                    {
+                                        textBox_ID.Text = "HH0" + soluong;
+                                    }
+                                    else
+                                    {
+                                        textBox_ID.Text = "HH" + soluong;
+                                    }
+                                }
+                                hangHoaEdit.id = textBox_ID.Text;
+
+                                return;
+                            }
+                        case "2":
+                            {
+                                MessageBox.Show("Lỗi kêt nối máy chủ. Vui lòng thử lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                    }
+                    MessageBox.Show("Đã có lỗi xãy ra");
+                    return;
+                }
+
+                // insert gian niem yet
+                CtGiaNiemYet ctGiaNiemYet = new CtGiaNiemYet();
+                ctGiaNiemYet.gia = (int)gia;
+                ctGiaNiemYet.idHH = hangHoaEdit.id;
+                ctGiaNiemYet.ngayApDung = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                if (!new Service_ChiTietGiaNiemYet().insertChitietNiemYet(ctGiaNiemYet))
+                {
+                    // delete hang hoa
+                    MessageBox.Show("Đã có lỗi trong quá trình truyền dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (!new Service_HangHoa().deleteHangHoa(ctGiaNiemYet.idHH))
+                    {
+                        MessageBox.Show("Lỗi kết nối server", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    return;
+                }
             }
+            else  //Sửa
+            {
+                hangHoaEdit = new HangHoa();
+                hangHoaEdit.id = textBox_ID.Text.Trim();
+                hangHoaEdit.ten = textBox_Ten.Text.Trim();
+                hangHoaEdit.soLuongTon = int.Parse(textBox_SoLuongTon.Text.Trim());
+                hangHoaEdit.moTa = richTextBox_MoTa.Text.Trim();
+                hangHoaEdit.khoiLuong = textBox_KhoiLuong.Text.Trim() + "G";
+                if (path != null) // upload ảnh
+                {
+                    hangHoaEdit.anh = new Service_HangHoa().uploadImage(path);
+                    if (hangHoaEdit.anh == null)
+                    {
+                        MessageBox.Show(Service_HangHoa.errorMessage, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    hangHoaEdit.anh = gridView1.GetFocusedRowCellValue(gridView1.Columns["anh"]).ToString();
+                }
+                if (!new Service_HangHoa().updateHangHoa(hangHoaEdit)) // update hàng hóa
+                {
+                    MessageBox.Show(Service_HangHoa.errorMessage, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                GiaHangHoa giaHangHoa = new Service_HangHoa().getGiaHangHoa(textBox_ID.Text.Trim());
+                if (gia != giaHangHoa.gia)
+                {
+                    CtGiaNiemYet ctGiaNiemYet = new CtGiaNiemYet();
+                    ctGiaNiemYet.gia = (int)gia;
+                    ctGiaNiemYet.idHH = textBox_ID.Text.Trim();
+                    ctGiaNiemYet.ngayApDung = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+                    // insert
+                    if (!new Service_ChiTietGiaNiemYet().insertChitietNiemYet(ctGiaNiemYet))
+                    {
+                        if (Service_ChiTietGiaNiemYet.errorCode == "1")
+                        {
+                            // update
+                            if (!new Service_ChiTietGiaNiemYet().updateChiTietGiaNiemYet(ctGiaNiemYet))
+                            {
+                                MessageBox.Show(Service_ChiTietGiaNiemYet.errorMessage, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(Service_HangHoa.errorMessage, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                }
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["khoiLuong"], hangHoaEdit.khoiLuong);
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["ten"], hangHoaEdit.ten);
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["moTa"], hangHoaEdit.moTa);
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["anh"], hangHoaEdit.anh);
+            }
+            
 
             barButtonItem_Them.Enabled = true;
             barButtonItem_Xoa.Enabled = true;
@@ -313,6 +378,8 @@ namespace QLBH_API.Forms
 
             gridControl_HangHoa.Enabled = true;
             groupBox_input.Enabled = false;
+
+            path = null;
         }
 
         private void pictureBox_anh_Click(object sender, EventArgs e)
@@ -331,21 +398,66 @@ namespace QLBH_API.Forms
 
         private void barButtonItem_Thoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            isEdit = true;
-            gridView1.DeleteSelectedRows();
-            hangHoaEdit = null;
             
-            if (gridView1.RowCount > 0)
+            if (!isEdit)
             {
-                gridView1.FocusedRowHandle = 0;
+                gridView1.DeleteSelectedRows();
+                hangHoaEdit = null;
+
+                if (gridView1.RowCount > 0)
+                {
+                    gridView1.FocusedRowHandle = 0;
+                }
+                else
+                {
+                    textBox_ID.Text = "";
+                    textBox_Ten.Text = "";
+                    textBox_KhoiLuong.Text = "";
+                    textBox_SoLuongTon.Text = "";
+                    richTextBox_MoTa.Text = "";
+                }
             }
             else
             {
-                textBox_ID.Text = "";
-                textBox_Ten.Text = "";
-                textBox_KhoiLuong.Text = "";
-                textBox_SoLuongTon.Text = "";
-                richTextBox_MoTa.Text = "";
+                if (gridView1.GetFocusedRowCellValue(gridView1.Columns["anh"]) != null)
+                {
+                    string name = gridView1.GetFocusedRowCellValue(gridView1.Columns["anh"]).ToString();
+                    Bitmap bitmap = Program.loadImage(Program.baseURL + string.Format("/img/" + name));
+
+                    pictureBox_anh.Image = Program.resizeImage(bitmap, pictureBox_anh.Width, pictureBox_anh.Height);
+                }
+                else
+                {
+                    pictureBox_anh.Image = null;
+                }
+
+                textBox_ID.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
+                textBox_Ten.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["ten"]).ToString();
+                textBox_KhoiLuong.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["khoiLuong"]).ToString();
+                textBox_SoLuongTon.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["soLuongTon"]).ToString();
+                richTextBox_MoTa.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["moTa"]).ToString();
+
+                GiaHangHoa giaHangHoa = new Service_HangHoa().getGiaHangHoa(textBox_ID.Text);
+                if (giaHangHoa == null)
+                {
+                    switch (Service_HangHoa.errorCode)
+                    {
+                        case "2":
+                            {
+                                MessageBox.Show("Lỗi kết nối với server", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        case "4":
+                            {
+                                textBox_Gia.Text = "0";
+                                break;
+                            }
+                    }
+                }
+                else
+                {
+                    textBox_Gia.Text = giaHangHoa.gia.ToString();
+                }
             }
 
             barButtonItem_Them.Enabled = true;
@@ -356,6 +468,8 @@ namespace QLBH_API.Forms
 
             gridControl_HangHoa.Enabled = true;
             groupBox_input.Enabled = false;
+
+            isEdit = true;
         }
 
         private void barButtonItem_Xoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -395,6 +509,24 @@ namespace QLBH_API.Forms
         {
             listHangHoa = null;
             fillData();
+        }
+
+        private void barButtonItem_Sua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            isEdit = true;
+
+            barButtonItem_Them.Enabled = false;
+            barButtonItem_Xoa.Enabled = false;
+            barButtonItem_Sua.Enabled = false;
+            barButtonItem_Ghi.Enabled = true;
+            barButtonItem_Thoat.Enabled = true;
+
+            gridControl_HangHoa.Enabled = false;
+            groupBox_input.Enabled = true;
+
+            textBox_KhoiLuong.Text = textBox_KhoiLuong.Text.ToUpper();
+            textBox_KhoiLuong.Text = textBox_KhoiLuong.Text.Replace('G',' ');
+            textBox_KhoiLuong.Text = textBox_KhoiLuong.Text.Trim();
         }
     }
 }

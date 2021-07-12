@@ -166,6 +166,32 @@ namespace QLBH_API.Services
                 return false;
             }
         }
+        public bool updateHangHoa(HangHoa hangHoa)
+        {
+            WebClient client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+            
+            try
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(hangHoa));
+                client.UploadString(url, "PUT", JsonConvert.SerializeObject(hangHoa));
+                return true;
+            }
+            catch(WebException e)
+            {
+                using (StreamReader r = new StreamReader(
+                  e.Response.GetResponseStream()))
+                {
+                    string responseContent = r.ReadToEnd();
+                    errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
+                    Console.WriteLine(errorMessage);
+                }
+                return false;
+            }
+
+        }
        
     }
 }

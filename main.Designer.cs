@@ -95,6 +95,7 @@ namespace QLBH_API
             this.barButtonItem_KhachHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_KhachHang.ImageOptions.Image")));
             this.barButtonItem_KhachHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_KhachHang.ImageOptions.LargeImage")));
             this.barButtonItem_KhachHang.Name = "barButtonItem_KhachHang";
+            this.barButtonItem_KhachHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_KhachHang_ItemClick);
             // 
             // barButtonItem_NhanVien
             // 
@@ -121,6 +122,7 @@ namespace QLBH_API
             this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem_DonDatHang
             // 
@@ -221,7 +223,7 @@ namespace QLBH_API
             this.IsMdiContainer = true;
             this.Name = "main";
             this.Ribbon = this.ribbonControl1;
-            this.Text = "Form1";
+            this.Text = "Quản lý bán hàng";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.ResumeLayout(false);

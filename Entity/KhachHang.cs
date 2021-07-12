@@ -8,11 +8,11 @@ namespace QLBH_API.Entity
 {
     class KhachHang
     {
-        string id { get; set; }
-        string hoTen { get; set; }
-        string diaChi { get; set; }
-        string sdt { get; set; }
-        string email { get; set; }
-        string matkhau { get; set; }
+        public string id { get; set; }
+        public string hoTen { get; set; }
+        public string diaChi { get; set; }
+        public string sdt { get; set; }
+        public string email { get; set; }
+        public string matKhau { get; set; }
     }
 }

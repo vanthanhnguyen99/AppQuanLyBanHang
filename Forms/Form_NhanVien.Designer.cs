@@ -69,7 +69,7 @@ namespace QLBH_API.Forms
             // 
             // gridControl_NhanVien
             // 
-            this.gridControl_NhanVien.Location = new System.Drawing.Point(29, 26);
+            this.gridControl_NhanVien.Location = new System.Drawing.Point(23, 30);
             this.gridControl_NhanVien.MainView = this.gridView1;
             this.gridControl_NhanVien.Name = "gridControl_NhanVien";
             this.gridControl_NhanVien.RightToLeft = System.Windows.Forms.RightToLeft.No;

@@ -83,6 +83,12 @@
     <Compile Include="Forms\Form_HangHoa.Designer.cs">
       <DependentUpon>Form_HangHoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_KhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_KhachHang.Designer.cs">
+      <DependentUpon>Form_KhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     <Compile Include="Forms\Form_NhanVien.Designer.cs">
       <DependentUpon>Form_NhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_NhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_NhapHang.Designer.cs">
+      <DependentUpon>Form_NhapHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,12 +116,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Service_ChiTietGiaNiemYet.cs" />
+    <Compile Include="Services\Service_ChiTietPhieuNhapHang.cs" />
     <Compile Include="Services\Service_HangHoa.cs" />
+    <Compile Include="Services\Service_KhachHang.cs" />
     <Compile Include="Services\Service_Login.cs" />
     <Compile Include="Services\Service_NhanVien.cs" />
+    <Compile Include="Services\Service_PhieuNhapHang.cs" />
     <Compile Include="Validation\ValidationData.cs" />
     <EmbeddedResource Include="Forms\Form_HangHoa.resx">
       <DependentUpon>Form_HangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_KhachHang.resx">
+      <DependentUpon>Form_KhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Login.aa-DJ.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
@@ -119,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_NhanVien.resx">
       <DependentUpon>Form_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_NhapHang.resx">
+      <DependentUpon>Form_NhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>

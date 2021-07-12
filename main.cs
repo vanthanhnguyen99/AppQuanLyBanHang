@@ -123,5 +123,38 @@ namespace QLBH_API
                 f.Show();
             }
         }
+
+        private void barButtonItem_KhachHang_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            System.Windows.Forms.Form frm = this.checkExist(typeof(Form_KhachHang));
+            if (frm != null)
+            {
+                frm.Activate();
+                frm.Show();
+            }
+            else
+            {
+                Form_KhachHang f = new Form_KhachHang();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            System.Windows.Forms.Form frm = this.checkExist(typeof(Form_NhapHang));
+            if (frm != null)
+            {
+                frm.Activate();
+                frm.Show();
+            }
+            else
+            {
+                Form_NhapHang f = new Form_NhapHang();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

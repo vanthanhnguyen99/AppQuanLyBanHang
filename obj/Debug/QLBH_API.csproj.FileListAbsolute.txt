@@ -106,3 +106,5 @@ C:\C#\QLBH_API\QLBH_API\bin\Debug\de\DevExpress.XtraNavBar.v19.2.resources.dll
 C:\C#\QLBH_API\QLBH_API\bin\Debug\es\DevExpress.XtraNavBar.v19.2.resources.dll
 C:\C#\QLBH_API\QLBH_API\bin\Debug\ja\DevExpress.XtraNavBar.v19.2.resources.dll
 C:\C#\QLBH_API\QLBH_API\bin\Debug\ru\DevExpress.XtraNavBar.v19.2.resources.dll
+C:\C#\QLBH_API\QLBH_API\obj\Debug\QLBH_API.Forms.Form_KhachHang.resources
+C:\C#\QLBH_API\QLBH_API\obj\Debug\QLBH_API.Forms.Form_NhapHang.resources
