@@ -10,21 +10,25 @@ using System.Threading.Tasks;
 
 namespace QLBH_API.Services
 {
-    class Service_ChiTietGiaNiemYet
+    class Service_ChiTietGiaNhap
     {
-        string url = Program.baseURL + string.Format("chitietgianiemyet");
         public static string errorCode;
         public static string errorMessage;
-        public bool insertChitietNiemYet(CtGiaNiemYet ctGiaNiemYet)
+        string url = Program.baseURL + string.Format("chitietgianhap");
+
+        public GiaHangHoa getGiaNhapHang(string id)
         {
             WebClient client = new WebClient();
             client.Encoding = System.Text.Encoding.UTF8;
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            GiaHangHoa giaHangHoa = null;
+
             try
             {
-                Console.WriteLine(JsonConvert.SerializeObject(ctGiaNiemYet));
-                client.UploadString(url, "POST", JsonConvert.SerializeObject(ctGiaNiemYet));
-                return true;
+                string data = client.DownloadString(Program.baseURL + string.Format("hanghoa/gianhaphang/" + id));
+                giaHangHoa = JsonConvert.DeserializeObject<GiaHangHoa>(data);
+                
             }
             catch (WebException e)
             {
@@ -32,22 +36,24 @@ namespace QLBH_API.Services
                    e.Response.GetResponseStream()))
                 {
                     string responseContent = r.ReadToEnd();
-                    Console.WriteLine(responseContent);
                     errorMessage = Errors.listError[responseContent];
                     errorCode = responseContent;
-
+                    Console.WriteLine(errorMessage);
+                   
                 }
-                return false;
             }
+            return giaHangHoa;
         }
-        public bool updateChiTietGiaNiemYet(CtGiaNiemYet ctGiaNiemYet)
+
+        public bool insertChiTietGiaNhap(CtGiaNhap ctGiaNhap)
         {
             WebClient client = new WebClient();
             client.Encoding = System.Text.Encoding.UTF8;
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
             try
             {
-                client.UploadString(url, "PUT", JsonConvert.SerializeObject(ctGiaNiemYet));
+                client.UploadString(url, "POST", JsonConvert.SerializeObject(ctGiaNhap));
                 return true;
             }
             catch (WebException e)
@@ -63,15 +69,16 @@ namespace QLBH_API.Services
                 return false;
             }
         }
-        public bool deleteChiTietGiaNiemYet(CtGiaNiemYet ctGiaNiemYet)
+
+        public bool updateChiTietGiaNhap(CtGiaNhap ctGiaNhap)
         {
             WebClient client = new WebClient();
             client.Encoding = System.Text.Encoding.UTF8;
-            ctGiaNiemYet.ngayApDung = ctGiaNiemYet.ngayApDung.Replace('-', '/');
-            string request = ctGiaNiemYet.idHH.Trim() + "&" + ctGiaNiemYet.ngayApDung;
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
             try
             {
-                client.UploadString(url + string.Format("/" + request),"DELETE","");
+                client.UploadString(url, "PUT", JsonConvert.SerializeObject(ctGiaNhap));
                 return true;
             }
             catch (WebException e)
@@ -87,7 +94,6 @@ namespace QLBH_API.Services
                 }
                 return false;
             }
-            
         }
     }
 }

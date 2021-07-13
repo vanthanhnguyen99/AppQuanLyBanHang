@@ -8,8 +8,8 @@ namespace QLBH_API.Entity
 {
     class CtGiaNhap
     {
-        DateTime ngayapdung { get; set; }
-        int gia { get; set; }
-        string idHH { get; set; }
+        public string ngayApDung { get; set; }
+        public int gia { get; set; }
+        public string idHH { get; set; }
     }
 }

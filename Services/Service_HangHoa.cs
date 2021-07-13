@@ -73,7 +73,7 @@ namespace QLBH_API.Services
             }
             return hangHoa;
         }
-        public GiaHangHoa getGiaHangHoa(string id)
+        public GiaHangHoa getGiaHangHoaBan(string id)
         {
             GiaHangHoa giaHangHoa = null;
             WebClient client = new WebClient();

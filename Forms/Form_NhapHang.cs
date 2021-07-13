@@ -17,6 +17,7 @@ namespace QLBH_API.Forms
     {
         BindingList<PhieuNhapHang> listPhieuNhapHang = null;
         BindingList<CtNhapHang> listChiTietNhapHang = null;
+        BindingList<HangHoa> listHangHoa = null;
         public Form_NhapHang()
         {
             InitializeComponent();
@@ -25,6 +26,21 @@ namespace QLBH_API.Forms
         private void Form_NhapHang_Load(object sender, EventArgs e)
         {
             loadToTablePhieuNhapHang();
+
+
+            if (listHangHoa == null)
+            {
+                listHangHoa = new BindingList<HangHoa>();
+                List<HangHoa> hangHoas = new Service_HangHoa().getListHangHoa();
+                foreach (HangHoa hangHoa in hangHoas)
+                {
+                    listHangHoa.Add(hangHoa);
+                }
+            }
+
+            comboBox_ChiTieNhapHang_IDHH.DataSource = listHangHoa;
+            comboBox_ChiTieNhapHang_IDHH.ValueMember = "ten";
+            comboBox_ChiTieNhapHang_IDHH.DisplayMember = "id";
         }
 
         private void loadToTablePhieuNhapHang()
@@ -55,7 +71,16 @@ namespace QLBH_API.Forms
             if (gridView1.GetRow(gridView1.FocusedRowHandle) == null) return;
             string id = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
             loadToTableChiTietNhapHang(id);
-            
+
+            textBox_ID.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
+            textBox_NgayLap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["ngayLap"]).ToString();
+            textBox_TongTien.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["tongTien"]).ToString();
+            string idNV = gridView1.GetFocusedRowCellValue(gridView1.Columns["idNV"]).ToString();
+            NhanVien nhanVien = new Service_NhanVien().getNhanVien(idNV);
+            textBox_NhanVien.Text = idNV;
+            textBox_HoTen.Text = nhanVien.hoTen;
+
+
         }
 
         private void loadToTableChiTietNhapHang(string id)
@@ -84,6 +109,13 @@ namespace QLBH_API.Forms
             gridView2.Columns["idPhieuNhapHang"].OptionsColumn.AllowEdit = false;
 
             gridView2.RefreshData();
+        }
+
+        private void gridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            
+            
+
         }
     }
 }

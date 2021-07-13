@@ -60,6 +60,8 @@ namespace QLBH_API.Forms
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_GiaNhap = new System.Windows.Forms.TextBox();
             this.groupBox_input.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_anh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_HangHoa)).BeginInit();
@@ -69,6 +71,8 @@ namespace QLBH_API.Forms
             // 
             // groupBox_input
             // 
+            this.groupBox_input.Controls.Add(this.textBox_GiaNhap);
+            this.groupBox_input.Controls.Add(this.label6);
             this.groupBox_input.Controls.Add(this.label5);
             this.groupBox_input.Controls.Add(this.textBox_Gia);
             this.groupBox_input.Controls.Add(this.label4);
@@ -94,9 +98,9 @@ namespace QLBH_API.Forms
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(404, 144);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Giá";
+            this.label5.Text = "Giá bán";
             // 
             // textBox_Gia
             // 
@@ -205,7 +209,7 @@ namespace QLBH_API.Forms
             // 
             // gridControl_HangHoa
             // 
-            this.gridControl_HangHoa.Location = new System.Drawing.Point(26, 37);
+            this.gridControl_HangHoa.Location = new System.Drawing.Point(26, 40);
             this.gridControl_HangHoa.MainView = this.gridView1;
             this.gridControl_HangHoa.Name = "gridControl_HangHoa";
             this.gridControl_HangHoa.Size = new System.Drawing.Size(1180, 358);
@@ -362,6 +366,23 @@ namespace QLBH_API.Forms
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 658);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(773, 144);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Giá nhập";
+            // 
+            // textBox_GiaNhap
+            // 
+            this.textBox_GiaNhap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_GiaNhap.Location = new System.Drawing.Point(847, 136);
+            this.textBox_GiaNhap.Name = "textBox_GiaNhap";
+            this.textBox_GiaNhap.Size = new System.Drawing.Size(195, 21);
+            this.textBox_GiaNhap.TabIndex = 14;
+            // 
             // Form_HangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,5 +438,7 @@ namespace QLBH_API.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox_Gia;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Refresh;
+        private System.Windows.Forms.TextBox textBox_GiaNhap;
+        private System.Windows.Forms.Label label6;
     }
 }

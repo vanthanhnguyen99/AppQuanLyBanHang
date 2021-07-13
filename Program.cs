@@ -32,7 +32,9 @@ namespace QLBH_API
         }
         public static Bitmap loadImage(string url)
         {
+            
             WebClient client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
             Stream stream = client.OpenRead(url);
             Bitmap bitmap = new Bitmap(stream);
 
