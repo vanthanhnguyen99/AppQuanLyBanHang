@@ -35,7 +35,7 @@ namespace QLBH_API.Forms
             
             switch (Form_Login.role) 
             {
-                case 0: // nhân viên
+                case 1: // adimin
                     {
                         barButtonItem_Them.Enabled = true;
                         barButtonItem_Xoa.Enabled = true;
@@ -44,7 +44,7 @@ namespace QLBH_API.Forms
                         barButtonItem_Thoat.Enabled = false;
                         break;
                     }
-                case 1: // admin
+                case 0: // nhân viên
                     {
                         barButtonItem_Them.Enabled = false;
                         barButtonItem_Xoa.Enabled = false;
@@ -191,6 +191,7 @@ namespace QLBH_API.Forms
             textBox_Ten.Text = "";
             richTextBox_MoTa.Text = "";
             textBox_Gia.Text = "0";
+            textBox_GiaNhap.Text = "0";
             pictureBox_anh.Image = null;
             gridView1.SetFocusedRowCellValue(gridView1.Columns["id"], textBox_ID.Text);
 

@@ -39,5 +39,79 @@ namespace QLBH_API.Services
             }
             return phieuNhapHangs;
         }
+        public bool insertPhieuNhapHang(PhieuNhapHang phieuNhapHang)
+        {
+            WebClient client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            try
+            {
+                client.UploadString(url, "POST", JsonConvert.SerializeObject(phieuNhapHang));
+                return true;
+            }
+            catch (WebException e)
+            {
+                using (StreamReader r = new StreamReader(
+                  e.Response.GetResponseStream()))
+                {
+                    string responseContent = r.ReadToEnd();
+                    errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
+                    Console.WriteLine(errorMessage);
+                }
+                return false;
+            }
+        }
+        
+        public bool deletePhieuNhapHang(string id)
+        {
+            WebClient client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            try
+            {
+                client.UploadString(url + string.Format("/" + id), "DELETE", "");
+                return true;
+            }
+            catch (WebException e)
+            {
+                using (StreamReader r = new StreamReader(
+                  e.Response.GetResponseStream()))
+                {
+                    string responseContent = r.ReadToEnd();
+                    errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
+                    Console.WriteLine(errorMessage);
+                }
+                return false;
+            }
+        }
+
+        public bool updatePhieuNhapHang(PhieuNhapHang phieuNhapHang)
+        {
+            WebClient client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            try
+            {
+                client.UploadString(url, "PUT", JsonConvert.SerializeObject(phieuNhapHang));
+                return true;
+            }
+            catch (WebException e)
+            {
+                using (StreamReader r = new StreamReader(
+                  e.Response.GetResponseStream()))
+                {
+                    string responseContent = r.ReadToEnd();
+                    errorMessage = Errors.listError[responseContent];
+                    errorCode = responseContent;
+                    Console.WriteLine(errorMessage);
+                }
+                return false;
+            }
+        }
     }
 }

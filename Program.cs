@@ -53,6 +53,20 @@ namespace QLBH_API
             }
             return res;
         }
+        public static string generateID(string maxID)
+        {
+            maxID = maxID.Trim();
+            string number = maxID.Substring(maxID.Length - 3);
+            Console.WriteLine(number);
+            string head = maxID.Substring(0, maxID.Length - 3);
+            Console.WriteLine(head);
+            int num = int.Parse(number) + 1;
+
+            if (num < 10) return head + "00" + num;
+            if (num < 100) return head + "0" + num;
+            return head + num;
+
+        }
         [STAThread]
         static void Main()
         {

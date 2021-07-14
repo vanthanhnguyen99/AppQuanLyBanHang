@@ -20,6 +20,7 @@ namespace QLBH_API.Form
         public static int role = -1;
         public Form_Login()
         {
+            Console.WriteLine( Program.generateID("PNH003"));
             InitializeComponent();
             textBox_password.PasswordChar = '*';
         }

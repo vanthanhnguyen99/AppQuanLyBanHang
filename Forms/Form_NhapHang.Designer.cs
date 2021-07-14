@@ -36,14 +36,35 @@ namespace QLBH_API.Forms
             this.gridControl_ChiTietNhapHang = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupBox_PhieuNhapHang = new System.Windows.Forms.GroupBox();
+            this.textBox_TongTien = new System.Windows.Forms.TextBox();
+            this.textBox_NhanVien = new System.Windows.Forms.TextBox();
+            this.textBox_HoTen = new System.Windows.Forms.TextBox();
+            this.textBox_NgayLap = new System.Windows.Forms.TextBox();
+            this.textBox_ID = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox_ChiTietNhapHang = new System.Windows.Forms.GroupBox();
+            this.comboBox_ChiTieNhapHang_TenHangHoa = new System.Windows.Forms.ComboBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.textBox_ChiTietNhapHang_IDHH = new System.Windows.Forms.TextBox();
+            this.textBox_ChiTieNhapHang_ThanhTien = new System.Windows.Forms.TextBox();
+            this.textBox_ChiTieNhapHang_IDPhieuNhap = new System.Windows.Forms.TextBox();
+            this.textBox_ChiTietNhapHang_ID = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItem_NhapHang_Them = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem_NhapHang_Sua = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_NhapHang_Ghi = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_NhapHang_Thoát = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_PhieuNhapHang_Xoa = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -58,36 +79,15 @@ namespace QLBH_API.Forms
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox_ID = new System.Windows.Forms.TextBox();
-            this.textBox_NgayLap = new System.Windows.Forms.TextBox();
-            this.textBox_HoTen = new System.Windows.Forms.TextBox();
-            this.textBox_NhanVien = new System.Windows.Forms.TextBox();
-            this.textBox_TongTien = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox_ChiTietNhapHang_ID = new System.Windows.Forms.TextBox();
-            this.textBox_ChiTieNhapHang_IDPhieuNhap = new System.Windows.Forms.TextBox();
-            this.textBox_ChiTieNhapHang_ThanhTien = new System.Windows.Forms.TextBox();
-            this.textBox_ChiTietNhapHang_TenHangHoa = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox_ChiTieNhapHang_IDHH = new System.Windows.Forms.ComboBox();
+            this.barButtonItem_NhapHang_Sua = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_PhieuDatHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_ChiTietNhapHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.groupBox_PhieuNhapHang.SuspendLayout();
             this.groupBox_ChiTietNhapHang.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl_PhieuDatHang
@@ -134,6 +134,7 @@ namespace QLBH_API.Forms
             this.groupBox_PhieuNhapHang.Controls.Add(this.label3);
             this.groupBox_PhieuNhapHang.Controls.Add(this.label2);
             this.groupBox_PhieuNhapHang.Controls.Add(this.label1);
+            this.groupBox_PhieuNhapHang.Enabled = false;
             this.groupBox_PhieuNhapHang.Location = new System.Drawing.Point(32, 516);
             this.groupBox_PhieuNhapHang.Name = "groupBox_PhieuNhapHang";
             this.groupBox_PhieuNhapHang.Size = new System.Drawing.Size(842, 174);
@@ -141,11 +142,91 @@ namespace QLBH_API.Forms
             this.groupBox_PhieuNhapHang.TabStop = false;
             this.groupBox_PhieuNhapHang.Text = "Thông tin phiếu nhập hàng";
             // 
+            // textBox_TongTien
+            // 
+            this.textBox_TongTien.Location = new System.Drawing.Point(632, 74);
+            this.textBox_TongTien.Name = "textBox_TongTien";
+            this.textBox_TongTien.Size = new System.Drawing.Size(171, 21);
+            this.textBox_TongTien.TabIndex = 9;
+            // 
+            // textBox_NhanVien
+            // 
+            this.textBox_NhanVien.Location = new System.Drawing.Point(107, 95);
+            this.textBox_NhanVien.Name = "textBox_NhanVien";
+            this.textBox_NhanVien.Size = new System.Drawing.Size(171, 21);
+            this.textBox_NhanVien.TabIndex = 8;
+            // 
+            // textBox_HoTen
+            // 
+            this.textBox_HoTen.Location = new System.Drawing.Point(353, 100);
+            this.textBox_HoTen.Name = "textBox_HoTen";
+            this.textBox_HoTen.Size = new System.Drawing.Size(171, 21);
+            this.textBox_HoTen.TabIndex = 7;
+            // 
+            // textBox_NgayLap
+            // 
+            this.textBox_NgayLap.Location = new System.Drawing.Point(353, 41);
+            this.textBox_NgayLap.Name = "textBox_NgayLap";
+            this.textBox_NgayLap.Size = new System.Drawing.Size(171, 21);
+            this.textBox_NgayLap.TabIndex = 6;
+            // 
+            // textBox_ID
+            // 
+            this.textBox_ID.Location = new System.Drawing.Point(107, 46);
+            this.textBox_ID.Name = "textBox_ID";
+            this.textBox_ID.Size = new System.Drawing.Size(171, 21);
+            this.textBox_ID.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(298, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Họ tên";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(46, 103);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Nhân viên";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(560, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Tổng tiền";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(298, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Ngày lập";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(46, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ID";
+            // 
             // groupBox_ChiTietNhapHang
             // 
-            this.groupBox_ChiTietNhapHang.Controls.Add(this.comboBox_ChiTieNhapHang_IDHH);
+            this.groupBox_ChiTietNhapHang.Controls.Add(this.comboBox_ChiTieNhapHang_TenHangHoa);
             this.groupBox_ChiTietNhapHang.Controls.Add(this.numericUpDown1);
-            this.groupBox_ChiTietNhapHang.Controls.Add(this.textBox_ChiTietNhapHang_TenHangHoa);
+            this.groupBox_ChiTietNhapHang.Controls.Add(this.textBox_ChiTietNhapHang_IDHH);
             this.groupBox_ChiTietNhapHang.Controls.Add(this.textBox_ChiTieNhapHang_ThanhTien);
             this.groupBox_ChiTietNhapHang.Controls.Add(this.textBox_ChiTieNhapHang_IDPhieuNhap);
             this.groupBox_ChiTietNhapHang.Controls.Add(this.textBox_ChiTietNhapHang_ID);
@@ -162,6 +243,110 @@ namespace QLBH_API.Forms
             this.groupBox_ChiTietNhapHang.TabStop = false;
             this.groupBox_ChiTietNhapHang.Text = "Thông tin chi tiết phiếu nhập hàng";
             // 
+            // comboBox_ChiTieNhapHang_TenHangHoa
+            // 
+            this.comboBox_ChiTieNhapHang_TenHangHoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ChiTieNhapHang_TenHangHoa.FormattingEnabled = true;
+            this.comboBox_ChiTieNhapHang_TenHangHoa.Location = new System.Drawing.Point(427, 126);
+            this.comboBox_ChiTieNhapHang_TenHangHoa.Name = "comboBox_ChiTieNhapHang_TenHangHoa";
+            this.comboBox_ChiTieNhapHang_TenHangHoa.Size = new System.Drawing.Size(182, 21);
+            this.comboBox_ChiTieNhapHang_TenHangHoa.TabIndex = 13;
+            this.comboBox_ChiTieNhapHang_TenHangHoa.SelectedIndexChanged += new System.EventHandler(this.comboBox_ChiTieNhapHang_TenHangHoa_SelectedIndexChanged);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(427, 56);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(182, 21);
+            this.numericUpDown1.TabIndex = 12;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // textBox_ChiTietNhapHang_IDHH
+            // 
+            this.textBox_ChiTietNhapHang_IDHH.Enabled = false;
+            this.textBox_ChiTietNhapHang_IDHH.Location = new System.Drawing.Point(726, 126);
+            this.textBox_ChiTietNhapHang_IDHH.Name = "textBox_ChiTietNhapHang_IDHH";
+            this.textBox_ChiTietNhapHang_IDHH.Size = new System.Drawing.Size(182, 21);
+            this.textBox_ChiTietNhapHang_IDHH.TabIndex = 11;
+            // 
+            // textBox_ChiTieNhapHang_ThanhTien
+            // 
+            this.textBox_ChiTieNhapHang_ThanhTien.Enabled = false;
+            this.textBox_ChiTieNhapHang_ThanhTien.Location = new System.Drawing.Point(726, 56);
+            this.textBox_ChiTieNhapHang_ThanhTien.Name = "textBox_ChiTieNhapHang_ThanhTien";
+            this.textBox_ChiTieNhapHang_ThanhTien.Size = new System.Drawing.Size(182, 21);
+            this.textBox_ChiTieNhapHang_ThanhTien.TabIndex = 10;
+            // 
+            // textBox_ChiTieNhapHang_IDPhieuNhap
+            // 
+            this.textBox_ChiTieNhapHang_IDPhieuNhap.Enabled = false;
+            this.textBox_ChiTieNhapHang_IDPhieuNhap.Location = new System.Drawing.Point(130, 121);
+            this.textBox_ChiTieNhapHang_IDPhieuNhap.Name = "textBox_ChiTieNhapHang_IDPhieuNhap";
+            this.textBox_ChiTieNhapHang_IDPhieuNhap.Size = new System.Drawing.Size(182, 21);
+            this.textBox_ChiTieNhapHang_IDPhieuNhap.TabIndex = 7;
+            // 
+            // textBox_ChiTietNhapHang_ID
+            // 
+            this.textBox_ChiTietNhapHang_ID.Enabled = false;
+            this.textBox_ChiTietNhapHang_ID.Location = new System.Drawing.Point(130, 58);
+            this.textBox_ChiTietNhapHang_ID.Name = "textBox_ChiTietNhapHang_ID";
+            this.textBox_ChiTietNhapHang_ID.Size = new System.Drawing.Size(182, 21);
+            this.textBox_ChiTietNhapHang_ID.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(348, 134);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(73, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Tên hàng hóa";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 129);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(101, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "ID Phiếu nhập hàng";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(641, 134);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(67, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "ID Hàng hóa";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(650, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Thành tiền";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(359, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Số lượng";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(55, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "ID";
+            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -177,7 +362,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_NhapHang_Sua,
             this.barButtonItem_NhapHang_Ghi,
             this.barButtonItem_NhapHang_Thoát,
-            this.barButtonItem1,
+            this.barButtonItem_PhieuNhapHang_Xoa,
             this.barButtonItem2,
             this.barButtonItem3,
             this.barButtonItem4,
@@ -199,9 +384,7 @@ namespace QLBH_API.Forms
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_NhapHang_Them),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_NhapHang_Ghi),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_NhapHang_Thoát),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_PhieuNhapHang_Xoa),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
@@ -223,15 +406,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_NhapHang_Them.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Them.ImageOptions.LargeImage")));
             this.barButtonItem_NhapHang_Them.Name = "barButtonItem_NhapHang_Them";
             this.barButtonItem_NhapHang_Them.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barButtonItem_NhapHang_Sua
-            // 
-            this.barButtonItem_NhapHang_Sua.Caption = "Sửa";
-            this.barButtonItem_NhapHang_Sua.Id = 2;
-            this.barButtonItem_NhapHang_Sua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Sua.ImageOptions.Image")));
-            this.barButtonItem_NhapHang_Sua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Sua.ImageOptions.LargeImage")));
-            this.barButtonItem_NhapHang_Sua.Name = "barButtonItem_NhapHang_Sua";
-            this.barButtonItem_NhapHang_Sua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_NhapHang_Them.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_NhapHang_Them_ItemClick);
             // 
             // barButtonItem_NhapHang_Ghi
             // 
@@ -251,16 +426,19 @@ namespace QLBH_API.Forms
             this.barButtonItem_NhapHang_Thoát.Name = "barButtonItem_NhapHang_Thoát";
             this.barButtonItem_NhapHang_Thoát.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // barButtonItem1
+            // barButtonItem_PhieuNhapHang_Xoa
             // 
-            this.barButtonItem1.Caption = "                             ";
-            this.barButtonItem1.Enabled = false;
-            this.barButtonItem1.Id = 5;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem_PhieuNhapHang_Xoa.Caption = "Xóa";
+            this.barButtonItem_PhieuNhapHang_Xoa.Id = 5;
+            this.barButtonItem_PhieuNhapHang_Xoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_PhieuNhapHang_Xoa.ImageOptions.Image")));
+            this.barButtonItem_PhieuNhapHang_Xoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_PhieuNhapHang_Xoa.ImageOptions.LargeImage")));
+            this.barButtonItem_PhieuNhapHang_Xoa.Name = "barButtonItem_PhieuNhapHang_Xoa";
+            this.barButtonItem_PhieuNhapHang_Xoa.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_PhieuNhapHang_Xoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_PhieuNhapHang_Xoa_ItemClick);
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "                             ";
+            this.barButtonItem2.Caption = "                                            ";
             this.barButtonItem2.Enabled = false;
             this.barButtonItem2.Id = 6;
             this.barButtonItem2.Name = "barButtonItem2";
@@ -274,7 +452,7 @@ namespace QLBH_API.Forms
             // 
             // barButtonItem4
             // 
-            this.barButtonItem4.Caption = "                                       ";
+            this.barButtonItem4.Caption = "                                                                                ";
             this.barButtonItem4.Enabled = false;
             this.barButtonItem4.Id = 8;
             this.barButtonItem4.Name = "barButtonItem4";
@@ -294,6 +472,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_ChiTietNhapHang_Them.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ChiTietNhapHang_Them.ImageOptions.LargeImage")));
             this.barButtonItem_ChiTietNhapHang_Them.Name = "barButtonItem_ChiTietNhapHang_Them";
             this.barButtonItem_ChiTietNhapHang_Them.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_ChiTietNhapHang_Them.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChiTietNhapHang_Them_ItemClick);
             // 
             // barButtonItem_ChiTietNhapHang_Xoa
             // 
@@ -303,6 +482,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_ChiTietNhapHang_Xoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ChiTietNhapHang_Xoa.ImageOptions.LargeImage")));
             this.barButtonItem_ChiTietNhapHang_Xoa.Name = "barButtonItem_ChiTietNhapHang_Xoa";
             this.barButtonItem_ChiTietNhapHang_Xoa.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_ChiTietNhapHang_Xoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChiTietNhapHang_Xoa_ItemClick);
             // 
             // barButtonItem_ChiTietNhapHang_Sua
             // 
@@ -312,6 +492,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_ChiTietNhapHang_Sua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ChiTietNhapHang_Sua.ImageOptions.LargeImage")));
             this.barButtonItem_ChiTietNhapHang_Sua.Name = "barButtonItem_ChiTietNhapHang_Sua";
             this.barButtonItem_ChiTietNhapHang_Sua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_ChiTietNhapHang_Sua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChiTietNhapHang_Sua_ItemClick);
             // 
             // barButtonItem_ChiTietNhapHang_Ghi
             // 
@@ -321,6 +502,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_ChiTietNhapHang_Ghi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ChiTietNhapHang_Ghi.ImageOptions.LargeImage")));
             this.barButtonItem_ChiTietNhapHang_Ghi.Name = "barButtonItem_ChiTietNhapHang_Ghi";
             this.barButtonItem_ChiTietNhapHang_Ghi.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_ChiTietNhapHang_Ghi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChiTietNhapHang_Ghi_ItemClick);
             // 
             // barButtonItem_ChiTietNhapHang_Thoat
             // 
@@ -330,6 +512,7 @@ namespace QLBH_API.Forms
             this.barButtonItem_ChiTietNhapHang_Thoat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ChiTietNhapHang_Thoat.ImageOptions.LargeImage")));
             this.barButtonItem_ChiTietNhapHang_Thoat.Name = "barButtonItem_ChiTietNhapHang_Thoat";
             this.barButtonItem_ChiTietNhapHang_Thoat.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_ChiTietNhapHang_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChiTietNhapHang_Thoat_ItemClick);
             // 
             // bar3
             // 
@@ -375,183 +558,14 @@ namespace QLBH_API.Forms
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 658);
             // 
-            // label1
+            // barButtonItem_NhapHang_Sua
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ID";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(298, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ngày lập";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(560, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Tổng tiền";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 103);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Nhân viên";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(298, 103);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Họ tên";
-            // 
-            // textBox_ID
-            // 
-            this.textBox_ID.Location = new System.Drawing.Point(107, 46);
-            this.textBox_ID.Name = "textBox_ID";
-            this.textBox_ID.Size = new System.Drawing.Size(171, 21);
-            this.textBox_ID.TabIndex = 5;
-            // 
-            // textBox_NgayLap
-            // 
-            this.textBox_NgayLap.Location = new System.Drawing.Point(353, 41);
-            this.textBox_NgayLap.Name = "textBox_NgayLap";
-            this.textBox_NgayLap.Size = new System.Drawing.Size(171, 21);
-            this.textBox_NgayLap.TabIndex = 6;
-            // 
-            // textBox_HoTen
-            // 
-            this.textBox_HoTen.Location = new System.Drawing.Point(354, 95);
-            this.textBox_HoTen.Name = "textBox_HoTen";
-            this.textBox_HoTen.Size = new System.Drawing.Size(171, 21);
-            this.textBox_HoTen.TabIndex = 7;
-            // 
-            // textBox_NhanVien
-            // 
-            this.textBox_NhanVien.Location = new System.Drawing.Point(107, 95);
-            this.textBox_NhanVien.Name = "textBox_NhanVien";
-            this.textBox_NhanVien.Size = new System.Drawing.Size(171, 21);
-            this.textBox_NhanVien.TabIndex = 8;
-            // 
-            // textBox_TongTien
-            // 
-            this.textBox_TongTien.Location = new System.Drawing.Point(632, 74);
-            this.textBox_TongTien.Name = "textBox_TongTien";
-            this.textBox_TongTien.Size = new System.Drawing.Size(171, 21);
-            this.textBox_TongTien.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(55, 61);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "ID";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(359, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Số lượng";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(650, 61);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Thành tiền";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(354, 129);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "ID Hàng hóa";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 129);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(101, 13);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "ID Phiếu nhập hàng";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(650, 129);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 13);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Tên hàng hóa";
-            // 
-            // textBox_ChiTietNhapHang_ID
-            // 
-            this.textBox_ChiTietNhapHang_ID.Location = new System.Drawing.Point(130, 58);
-            this.textBox_ChiTietNhapHang_ID.Name = "textBox_ChiTietNhapHang_ID";
-            this.textBox_ChiTietNhapHang_ID.Size = new System.Drawing.Size(182, 21);
-            this.textBox_ChiTietNhapHang_ID.TabIndex = 6;
-            // 
-            // textBox_ChiTieNhapHang_IDPhieuNhap
-            // 
-            this.textBox_ChiTieNhapHang_IDPhieuNhap.Location = new System.Drawing.Point(130, 121);
-            this.textBox_ChiTieNhapHang_IDPhieuNhap.Name = "textBox_ChiTieNhapHang_IDPhieuNhap";
-            this.textBox_ChiTieNhapHang_IDPhieuNhap.Size = new System.Drawing.Size(182, 21);
-            this.textBox_ChiTieNhapHang_IDPhieuNhap.TabIndex = 7;
-            // 
-            // textBox_ChiTieNhapHang_ThanhTien
-            // 
-            this.textBox_ChiTieNhapHang_ThanhTien.Location = new System.Drawing.Point(726, 56);
-            this.textBox_ChiTieNhapHang_ThanhTien.Name = "textBox_ChiTieNhapHang_ThanhTien";
-            this.textBox_ChiTieNhapHang_ThanhTien.Size = new System.Drawing.Size(182, 21);
-            this.textBox_ChiTieNhapHang_ThanhTien.TabIndex = 10;
-            // 
-            // textBox_ChiTietNhapHang_TenHangHoa
-            // 
-            this.textBox_ChiTietNhapHang_TenHangHoa.Location = new System.Drawing.Point(726, 126);
-            this.textBox_ChiTietNhapHang_TenHangHoa.Name = "textBox_ChiTietNhapHang_TenHangHoa";
-            this.textBox_ChiTietNhapHang_TenHangHoa.Size = new System.Drawing.Size(182, 21);
-            this.textBox_ChiTietNhapHang_TenHangHoa.TabIndex = 11;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(427, 56);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(182, 21);
-            this.numericUpDown1.TabIndex = 12;
-            // 
-            // comboBox_ChiTieNhapHang_IDHH
-            // 
-            this.comboBox_ChiTieNhapHang_IDHH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_ChiTieNhapHang_IDHH.FormattingEnabled = true;
-            this.comboBox_ChiTieNhapHang_IDHH.Location = new System.Drawing.Point(427, 126);
-            this.comboBox_ChiTieNhapHang_IDHH.Name = "comboBox_ChiTieNhapHang_IDHH";
-            this.comboBox_ChiTieNhapHang_IDHH.Size = new System.Drawing.Size(182, 21);
-            this.comboBox_ChiTieNhapHang_IDHH.TabIndex = 13;
+            this.barButtonItem_NhapHang_Sua.Caption = "Sửa";
+            this.barButtonItem_NhapHang_Sua.Id = 2;
+            this.barButtonItem_NhapHang_Sua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Sua.ImageOptions.Image")));
+            this.barButtonItem_NhapHang_Sua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Sua.ImageOptions.LargeImage")));
+            this.barButtonItem_NhapHang_Sua.Name = "barButtonItem_NhapHang_Sua";
+            this.barButtonItem_NhapHang_Sua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // Form_NhapHang
             // 
@@ -577,8 +591,8 @@ namespace QLBH_API.Forms
             this.groupBox_PhieuNhapHang.PerformLayout();
             this.groupBox_ChiTietNhapHang.ResumeLayout(false);
             this.groupBox_ChiTietNhapHang.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,7 +617,7 @@ namespace QLBH_API.Forms
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_NhapHang_Thoát;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_PhieuNhapHang_Xoa;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
@@ -623,9 +637,9 @@ namespace QLBH_API.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox_ChiTieNhapHang_IDHH;
+        private System.Windows.Forms.ComboBox comboBox_ChiTieNhapHang_TenHangHoa;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBox_ChiTietNhapHang_TenHangHoa;
+        private System.Windows.Forms.TextBox textBox_ChiTietNhapHang_IDHH;
         private System.Windows.Forms.TextBox textBox_ChiTieNhapHang_ThanhTien;
         private System.Windows.Forms.TextBox textBox_ChiTieNhapHang_IDPhieuNhap;
         private System.Windows.Forms.TextBox textBox_ChiTietNhapHang_ID;
