@@ -157,16 +157,20 @@ namespace QLBH_API.Forms
         {
             if (gridView2.GetFocusedRowCellValue(gridView2.Columns["id"]) == null)
             {
-                if(isEdit) textBox_ChiTieNhapHang_IDPhieuNhap.Text = "";
+                if (isEdit)
+                {
+                    textBox_ChiTieNhapHang_IDPhieuNhap.Text = "";
+                }
                 textBox_ChiTieNhapHang_ThanhTien.Text = "";
-                textBox_ChiTietNhapHang_ID.Text = "";
+                if (isEdit) textBox_ChiTietNhapHang_ID.Text = "";
                 textBox_ChiTietNhapHang_IDHH.Text = "";
                 comboBox_ChiTieNhapHang_TenHangHoa.SelectedIndex = 0;
                 numericUpDown1.Value = 0;
                 return;
             }
+           
             comboBox_ChiTieNhapHang_TenHangHoa.SelectedValue = gridView2.GetFocusedRowCellValue(gridView2.Columns["idhh"]).ToString();
-            textBox_ChiTietNhapHang_ID.Text = gridView2.GetFocusedRowCellValue(gridView2.Columns["id"]).ToString();
+            if (isEdit) textBox_ChiTietNhapHang_ID.Text = gridView2.GetFocusedRowCellValue(gridView2.Columns["id"]).ToString();
             numericUpDown1.Value = Decimal.Parse(gridView2.GetFocusedRowCellValue(gridView2.Columns["soLuong"]).ToString());
             textBox_ChiTieNhapHang_ThanhTien.Text = gridView2.GetFocusedRowCellValue(gridView2.Columns["thanhTien"]).ToString();
             textBox_ChiTieNhapHang_IDPhieuNhap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
@@ -174,7 +178,7 @@ namespace QLBH_API.Forms
 
         private void comboBox_ChiTieNhapHang_TenHangHoa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_ChiTieNhapHang_TenHangHoa.SelectedIndex == 0) return;
+            if (comboBox_ChiTieNhapHang_TenHangHoa.SelectedValue == null || comboBox_ChiTieNhapHang_TenHangHoa.SelectedIndex == 0) return;
             textBox_ChiTietNhapHang_IDHH.Text = comboBox_ChiTieNhapHang_TenHangHoa.SelectedValue.ToString();
 
 
@@ -259,13 +263,47 @@ namespace QLBH_API.Forms
         private void barButtonItem_ChiTietNhapHang_Them_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             isEdit = false;
+
+
+            // xử lý combobox
+
+            for (int i = 0; i < gridView2.RowCount; i++)
+            {
+                string id = (gridView2.GetRowCellDisplayText(i, gridView2.Columns["idhh"]));
+
+                listHangHoa.Remove(listHangHoa.SingleOrDefault(p => p.id == id));
+                
+                //for (int j = 0; j < listHangHoa.Count; j++)
+                //{
+                //    if (id.Trim() == listHangHoa.g)
+                //}
+
+            }
+            if (listHangHoa.Count == 0)
+            {
+                MessageBox.Show("Không thể thêm hàng hóa vào đơn nhập này","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                for (int i = 0; i < gridView2.RowCount; i++)
+                {
+                    string id = (gridView2.GetRowCellDisplayText(i, gridView2.Columns["idhh"]));
+
+                    listHangHoa.Add(new Service_HangHoa().getHangHoa(id));
+                }
+                isEdit = true;
+                return;
+            }
+
+
+            comboBox_ChiTieNhapHang_TenHangHoa.DataSource = listHangHoa;
+            comboBox_ChiTieNhapHang_TenHangHoa.ValueMember = "id";
+            comboBox_ChiTieNhapHang_TenHangHoa.DisplayMember = "ten";
+
             gridView2.AddNewRow();
             List<CtNhapHang> ctNhapHangs = new Service_ChiTietPhieuNhapHang().getListChiTietNhapHang();
   
-            if (gridView2.RowCount > 0)
+            if (gridView2.RowCount > 1)
                 textBox_ChiTietNhapHang_ID.Text = Program.generateID(ctNhapHangs[ctNhapHangs.Count-1].id);
             else textBox_ChiTietNhapHang_ID.Text = "CTNH001";
-
+            //MessageBox.Show(Program.generateID(ctNhapHangs[ctNhapHangs.Count - 1].id));
             
 
             barButtonItem_NhapHang_Them.Enabled = false;
@@ -280,7 +318,12 @@ namespace QLBH_API.Forms
             gridControl_ChiTietNhapHang.Enabled = false;
             groupBox_ChiTietNhapHang.Enabled = true;
 
-            textBox_ChiTieNhapHang_IDPhieuNhap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
+            //textBox_ChiTieNhapHang_IDPhieuNhap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
+
+
+           
+
+            
         }
 
         private void barButtonItem_ChiTietNhapHang_Sua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -345,6 +388,16 @@ namespace QLBH_API.Forms
         {
             if (!isEdit)
             {
+               
+
+                // add lại
+                for (int i = 0; i < gridView2.RowCount-1; i++)
+                {
+                    string id = (gridView2.GetRowCellDisplayText(i, gridView2.Columns["idhh"]));
+
+                    listHangHoa.Add(new Service_HangHoa().getHangHoa(id));
+                }
+
                 gridView2.DeleteSelectedRows();
             }
             else
@@ -366,15 +419,18 @@ namespace QLBH_API.Forms
 
             gridControl_ChiTietNhapHang.Enabled = true;
             groupBox_ChiTietNhapHang.Enabled = false;
+            isEdit = true;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (!groupBox_ChiTietNhapHang.Enabled) return;
+            
             if (numericUpDown1.Value < 0) numericUpDown1.Value = 0;
             if (comboBox_ChiTieNhapHang_TenHangHoa.SelectedIndex != 0 && numericUpDown1.Value != 0)
             {
                 GiaHangHoa giaHangHoa = new Service_ChiTietGiaNhap().getGiaNhapHang(textBox_ChiTietNhapHang_IDHH.Text);
+                if (giaHangHoa == null) return;
                 textBox_ChiTieNhapHang_ThanhTien.Text = (giaHangHoa.gia * numericUpDown1.Value).ToString();
             }
             else
@@ -404,6 +460,14 @@ namespace QLBH_API.Forms
                 {
                     MessageBox.Show(Service_ChiTietPhieuNhapHang.errorMessage, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
+
+                // add lại
+                for (int i = 0; i < gridView2.RowCount; i++)
+                {
+                    string id = (gridView2.GetRowCellDisplayText(i, gridView2.Columns["idhh"]));
+
+                    listHangHoa.Add(new Service_HangHoa().getHangHoa(id));
                 }
             }
             else
@@ -470,6 +534,8 @@ namespace QLBH_API.Forms
 
             gridControl_ChiTietNhapHang.Enabled = true;
             groupBox_ChiTietNhapHang.Enabled = false;
+
+            isEdit = true;
         }
     }
 }

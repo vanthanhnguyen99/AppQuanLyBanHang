@@ -104,25 +104,13 @@ namespace QLBH_API.Forms
             barButtonItem_Ghi.Enabled = true;
             barButtonItem_Thoat.Enabled = true;
 
-            List<NhanVien> nhanViens = new Service_NhanVien().getListNhanVien();
-            int soLuong = nhanViens.Count;
-
             gridView1.AddNewRow();
-            if (soLuong < 10)
-            {
-                textBox_ID.Text = "NV00" + soLuong;
-            }
-            else
-            {
-                if (soLuong < 100)
-                {
-                    textBox_ID.Text = "NV0" + soLuong;
-                }
-                else
-                {
-                    textBox_ID.Text = "NV" + soLuong;
-                }
-            }
+
+            List<NhanVien> nhanViens = new Service_NhanVien().getListNhanVien();
+            if (nhanViens.Count > 0) textBox_ID.Text = Program.generateID(nhanViens[nhanViens.Count - 1].id);
+            else textBox_ID.Text = "NV001";
+
+           
             richTextBox_DiaChi.Text = "";
             textBox_Email.Text = "";
             textBox_HoTen.Text = "";
@@ -231,7 +219,7 @@ namespace QLBH_API.Forms
 
         private void barButtonItem_Ghi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!ValidationData.checkEmail(textBox_Email.Text.Trim()))
+            if (textBox_Email.Text.Trim().Length == 0 || !ValidationData.checkEmail(textBox_Email.Text.Trim()))
             {
                 MessageBox.Show("Địa chỉ email trống hoặc không đúng định dạng", "Thông báo", MessageBoxButtons.OK);
                 return;
@@ -246,7 +234,7 @@ namespace QLBH_API.Forms
                 MessageBox.Show("Không để trống để trống mật khẩu", "Thông báo", MessageBoxButtons.OK);
                 return;
             }
-            if (!ValidationData.checkSDT(textBox_SoDienThoai.Text.Trim()))
+            if (textBox_SoDienThoai.Text.Trim().Length == 0 || !ValidationData.checkSDT(textBox_SoDienThoai.Text.Trim()))
             {
                 MessageBox.Show("Số điện thoại trống hoặc không hợp lệ", "Thông báo", MessageBoxButtons.OK);
                 
@@ -292,6 +280,11 @@ namespace QLBH_API.Forms
                 if (!new Service_NhanVien().insertNhanVien(NhanVienEdit))
                 {
                     MessageBox.Show("Đã có lỗi xãy ra! Vui lòng thử lại sau");
+
+                    List<NhanVien> nhanViens = new Service_NhanVien().getListNhanVien();
+                    if (nhanViens.Count > 0) textBox_ID.Text = Program.generateID(nhanViens[nhanViens.Count - 1].id);
+                    else textBox_ID.Text = "NV001";
+
                     return;
                 }
     
