@@ -8,12 +8,12 @@ namespace QLBH_API.Entity
 {
     class PhieuDatHang
     {
-        string id { get; set; }
-        DateTime ngayLap { get; set; }
-        int tongTien { get; set; }
-        string idNV { get; set; }
-        string idKH { get; set; }
-        bool xacnhan { get; set; }
+        public string id { get; set; }
+        public string ngayLap { get; set; }
+        public decimal tongTien { get; set; }
+        public string idNV { get; set; }
+        public string idKH { get; set; }
+        public string trangThai { get; set; }
 
     }
 }

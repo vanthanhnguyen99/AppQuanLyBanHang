@@ -77,6 +77,12 @@
     <Compile Include="Entity\NhanVien.cs" />
     <Compile Include="Entity\PhieuDatHang.cs" />
     <Compile Include="Entity\PhieuNhapHang.cs" />
+    <Compile Include="Forms\Form_DatHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_DatHang.Designer.cs">
+      <DependentUpon>Form_DatHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_HangHoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,8 +128,12 @@
     <Compile Include="Services\Service_KhachHang.cs" />
     <Compile Include="Services\Service_Login.cs" />
     <Compile Include="Services\Service_NhanVien.cs" />
+    <Compile Include="Services\Service_PhieuDatHang.cs" />
     <Compile Include="Services\Service_PhieuNhapHang.cs" />
     <Compile Include="Validation\ValidationData.cs" />
+    <EmbeddedResource Include="Forms\Form_DatHang.resx">
+      <DependentUpon>Form_DatHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_HangHoa.resx">
       <DependentUpon>Form_HangHoa.cs</DependentUpon>
     </EmbeddedResource>

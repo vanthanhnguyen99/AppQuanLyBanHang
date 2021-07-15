@@ -329,7 +329,7 @@ namespace QLBH_API.Forms
             var confirm = MessageBox.Show("Bạn có chắc muốn xóa khách hàng " + textBox_ID.Text + "?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
             {
-                if (new Service_NhanVien().deleteNhanVien(textBox_ID.Text.Trim()))
+                if (new Service_KhachHang().deleteKhachHang(textBox_ID.Text.Trim()))
                 {
                     gridView1.DeleteSelectedRows();
                     if (gridView1.RowCount > 0) gridView1.FocusedRowHandle = 0;

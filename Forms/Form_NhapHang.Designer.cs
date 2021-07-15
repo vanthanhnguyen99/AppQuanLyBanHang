@@ -62,8 +62,6 @@ namespace QLBH_API.Forms
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItem_NhapHang_Them = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem_NhapHang_Ghi = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem_NhapHang_Thoát = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_PhieuNhapHang_Xoa = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
@@ -80,6 +78,8 @@ namespace QLBH_API.Forms
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem_NhapHang_Sua = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_NhapHang_Ghi = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_NhapHang_Thoát = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_PhieuDatHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_ChiTietNhapHang)).BeginInit();
@@ -241,7 +241,7 @@ namespace QLBH_API.Forms
             this.groupBox_ChiTietNhapHang.Size = new System.Drawing.Size(930, 173);
             this.groupBox_ChiTietNhapHang.TabIndex = 3;
             this.groupBox_ChiTietNhapHang.TabStop = false;
-            this.groupBox_ChiTietNhapHang.Text = "Thông tin chi tiết phiếu nhập hàng";
+            this.groupBox_ChiTietNhapHang.Text = "s";
             // 
             // comboBox_ChiTieNhapHang_TenHangHoa
             // 
@@ -408,24 +408,6 @@ namespace QLBH_API.Forms
             this.barButtonItem_NhapHang_Them.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem_NhapHang_Them.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_NhapHang_Them_ItemClick);
             // 
-            // barButtonItem_NhapHang_Ghi
-            // 
-            this.barButtonItem_NhapHang_Ghi.Caption = "Ghi";
-            this.barButtonItem_NhapHang_Ghi.Id = 3;
-            this.barButtonItem_NhapHang_Ghi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Ghi.ImageOptions.Image")));
-            this.barButtonItem_NhapHang_Ghi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Ghi.ImageOptions.LargeImage")));
-            this.barButtonItem_NhapHang_Ghi.Name = "barButtonItem_NhapHang_Ghi";
-            this.barButtonItem_NhapHang_Ghi.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barButtonItem_NhapHang_Thoát
-            // 
-            this.barButtonItem_NhapHang_Thoát.Caption = "Thoát";
-            this.barButtonItem_NhapHang_Thoát.Id = 4;
-            this.barButtonItem_NhapHang_Thoát.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Thoát.ImageOptions.Image")));
-            this.barButtonItem_NhapHang_Thoát.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Thoát.ImageOptions.LargeImage")));
-            this.barButtonItem_NhapHang_Thoát.Name = "barButtonItem_NhapHang_Thoát";
-            this.barButtonItem_NhapHang_Thoát.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // barButtonItem_PhieuNhapHang_Xoa
             // 
             this.barButtonItem_PhieuNhapHang_Xoa.Caption = "Xóa";
@@ -567,6 +549,24 @@ namespace QLBH_API.Forms
             this.barButtonItem_NhapHang_Sua.Name = "barButtonItem_NhapHang_Sua";
             this.barButtonItem_NhapHang_Sua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // barButtonItem_NhapHang_Ghi
+            // 
+            this.barButtonItem_NhapHang_Ghi.Caption = "Ghi";
+            this.barButtonItem_NhapHang_Ghi.Id = 3;
+            this.barButtonItem_NhapHang_Ghi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Ghi.ImageOptions.Image")));
+            this.barButtonItem_NhapHang_Ghi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Ghi.ImageOptions.LargeImage")));
+            this.barButtonItem_NhapHang_Ghi.Name = "barButtonItem_NhapHang_Ghi";
+            this.barButtonItem_NhapHang_Ghi.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barButtonItem_NhapHang_Thoát
+            // 
+            this.barButtonItem_NhapHang_Thoát.Caption = "Thoát";
+            this.barButtonItem_NhapHang_Thoát.Id = 4;
+            this.barButtonItem_NhapHang_Thoát.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Thoát.ImageOptions.Image")));
+            this.barButtonItem_NhapHang_Thoát.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_NhapHang_Thoát.ImageOptions.LargeImage")));
+            this.barButtonItem_NhapHang_Thoát.Name = "barButtonItem_NhapHang_Thoát";
+            this.barButtonItem_NhapHang_Thoát.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // Form_NhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,7 +581,7 @@ namespace QLBH_API.Forms
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Form_NhapHang";
-            this.Text = "Form_NhapHang";
+            this.Text = "Nhập hàng";
             this.Load += new System.EventHandler(this.Form_NhapHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_PhieuDatHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

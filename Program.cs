@@ -20,7 +20,7 @@ namespace QLBH_API
         /// </summary>
 
         //public static string baseURL = "https://quan-ly-ban-hang-api.herokuapp.com/";
-        public static string baseURL = "http://192.168.1.100:8080/";
+        public static string baseURL = "http://116.109.64.101:8080/";
         public static main form_main;
         public static string convertToUTF8(string data)
         {

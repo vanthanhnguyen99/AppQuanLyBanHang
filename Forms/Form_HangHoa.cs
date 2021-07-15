@@ -165,24 +165,9 @@ namespace QLBH_API.Forms
             groupBox_input.Enabled = true;
 
             gridView1.AddNewRow();
-            
-            hangHoaEdit = new HangHoa();
-            int soluong = new Service_HangHoa().getListHangHoa().Count;
-            if (soluong < 10)
-            {
-                textBox_ID.Text = "HH00" + soluong;
-            }
-            else
-            {
-                if (soluong < 100)
-                {
-                    textBox_ID.Text = "HH0" + soluong;
-                }
-                else
-                {
-                    textBox_ID.Text = "HH" + soluong;
-                }
-            }
+            if (gridView1.RowCount > 1) textBox_ID.Text = Program.generateID(gridView1.GetRowCellDisplayText(gridView1.RowCount - 2, gridView1.Columns["id"]));
+            else textBox_ID.Text = "HH001";
+
             hangHoaEdit.id = textBox_ID.Text;
             hangHoaEdit.soLuongTon = 0;
 

@@ -156,5 +156,21 @@ namespace QLBH_API
                 f.Show();
             }
         }
+
+        private void barButtonItem_DonDatHang_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            System.Windows.Forms.Form frm = this.checkExist(typeof(Form_DatHang));
+            if (frm != null)
+            {
+                frm.Activate();
+                frm.Show();
+            }
+            else
+            {
+                Form_DatHang f = new Form_DatHang();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

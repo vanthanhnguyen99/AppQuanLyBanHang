@@ -8,10 +8,10 @@ namespace QLBH_API.Entity
 {
     class CtDatHang
     {
-        string id { get; set; }
-        int soLuong { get; set; }
-        int thanhTien { get; set; }
-        string idHH { get; set; }
-        string idPhieuDatHang { get; set; }
+        public string id { get; set; }
+        public int soLuong { get; set; }
+        public int thanhTien { get; set; }
+        public string idHH { get; set; }
+        public string idPhieuDatHang { get; set; }
     }
 }

@@ -122,6 +122,8 @@ namespace QLBH_API.Forms
             gridControl_ChiTietNhapHang.Enabled = true;
             groupBox_ChiTietNhapHang.Enabled = false;
 
+          
+
         }
 
         private void loadToTableChiTietNhapHang(string id)

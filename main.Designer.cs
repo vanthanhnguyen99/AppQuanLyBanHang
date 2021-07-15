@@ -131,6 +131,7 @@ namespace QLBH_API
             this.barButtonItem_DonDatHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_DonDatHang.ImageOptions.Image")));
             this.barButtonItem_DonDatHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_DonDatHang.ImageOptions.LargeImage")));
             this.barButtonItem_DonDatHang.Name = "barButtonItem_DonDatHang";
+            this.barButtonItem_DonDatHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_DonDatHang_ItemClick);
             // 
             // ribbonPage_DangNhap
             // 
