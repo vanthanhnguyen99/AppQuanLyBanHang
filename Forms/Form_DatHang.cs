@@ -24,6 +24,7 @@ namespace QLBH_API.Forms
             list.Add("Chờ xác nhận");
             list.Add("Xác nhận và giao hàng");
             list.Add ("Hoàn thành");
+            list.Add("Giao hàng thất bại");
             InitializeComponent();
         }
 
@@ -87,6 +88,12 @@ namespace QLBH_API.Forms
                             gridView1.SetRowCellValue(i, "trangThai", "Hoàn thành");
                             break;
                         }
+                    case "3":
+                        {
+                            gridView1.SetRowCellValue(i, "trangThai", "Giao hàng thất bại");
+                            break;
+                        }
+
                 }
             }
         }
@@ -95,7 +102,7 @@ namespace QLBH_API.Forms
         {
             textBox_ID.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
             textBox_NgayLap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["ngayLap"]).ToString();
-            textBox_TongTien.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["tongTien"]).ToString();
+            textBox_TongTien.Text = Program.formatCurrency(gridView1.GetFocusedRowCellValue(gridView1.Columns["tongTien"]).ToString());
             textBox_NhanVien.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["idNV"]).ToString();
             NhanVien nhanVien = new Service_NhanVien().getNhanVien(textBox_NhanVien.Text);
             textBox_HoTen.Text = nhanVien.hoTen;
@@ -152,7 +159,10 @@ namespace QLBH_API.Forms
             textBox_TenHangHoa.Text = hangHoa.ten;
             textBox_ChiTietNhapHang_ID.Text = gridView2.GetFocusedRowCellValue(gridView2.Columns["id"]).ToString();
             numericUpDown1.Value = Decimal.Parse(gridView2.GetFocusedRowCellValue(gridView2.Columns["soLuong"]).ToString());
-            textBox_ChiTieNhapHang_ThanhTien.Text = gridView2.GetFocusedRowCellValue(gridView2.Columns["thanhTien"]).ToString();
+            
+           
+            textBox_ChiTieNhapHang_ThanhTien.Text = Program.formatCurrency(gridView2.GetFocusedRowCellValue(gridView2.Columns["thanhTien"]).ToString());
+
             textBox_ChiTieNhapHang_IDPhieuNhap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
             textBox_ChiTietNhapHang_IDHH.Text = hangHoa.id;
         }
@@ -176,6 +186,10 @@ namespace QLBH_API.Forms
                     }
                 case "Chờ xác nhận":
                     {
+                        comboBox_TrangThai.Items.Clear();
+                        comboBox_TrangThai.Items.Add(list[0]);
+                        comboBox_TrangThai.Items.Add(list[1]);
+                        comboBox_TrangThai.Items.Add(list[2]);
                         break;
                     }
                 case "Xác nhận và giao hàng":
@@ -183,6 +197,7 @@ namespace QLBH_API.Forms
                         comboBox_TrangThai.Items.Clear();
                         comboBox_TrangThai.Items.Add(list[2]);
                         comboBox_TrangThai.Items.Add(list[3]);
+                        comboBox_TrangThai.Items.Add(list[4]);
                         comboBox_TrangThai.SelectedIndex = 0;
                         break;
                     }
@@ -190,6 +205,13 @@ namespace QLBH_API.Forms
                     {
                         comboBox_TrangThai.Items.Clear();
                         comboBox_TrangThai.Items.Add(list[3]);
+                        comboBox_TrangThai.SelectedIndex = 0;
+                        break;
+                    }
+                case "Giao hàng thất bại":
+                    {
+                        comboBox_TrangThai.Items.Clear();
+                        comboBox_TrangThai.Items.Add(list[4]);
                         comboBox_TrangThai.SelectedIndex = 0;
                         break;
                     }
@@ -231,6 +253,11 @@ namespace QLBH_API.Forms
                             phieuDatHang.trangThai = "2";
                             break;
                         }
+                    case "Giao hàng thất bại":
+                        {
+                            phieuDatHang.trangThai = "3";
+                            break;
+                        }
                 }
 
                 if (!new Service_PhieuDatHang().updatePhieuDatHang(phieuDatHang))
@@ -238,7 +265,7 @@ namespace QLBH_API.Forms
                     MessageBox.Show(Service_PhieuDatHang.errorMessage, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
+                new Service_SendMail().guiTrangThai(textBox_ID.Text);
                 gridView1.SetFocusedRowCellValue(gridView1.Columns["trangThai"], comboBox_TrangThai.SelectedItem.ToString());
             }
 
@@ -253,6 +280,7 @@ namespace QLBH_API.Forms
             comboBox_TrangThai.Items.Add(list[1]);
             comboBox_TrangThai.Items.Add(list[2]);
             comboBox_TrangThai.Items.Add(list[3]);
+            comboBox_TrangThai.Items.Add(list[4]);
 
             comboBox_TrangThai.SelectedItem = gridView1.GetFocusedRowCellValue(gridView1.Columns["trangThai"]);
         }
@@ -270,7 +298,19 @@ namespace QLBH_API.Forms
             comboBox_TrangThai.Items.Add(list[1]);
             comboBox_TrangThai.Items.Add(list[2]);
             comboBox_TrangThai.Items.Add(list[3]);
+            comboBox_TrangThai.Items.Add(list[4]);
             comboBox_TrangThai.SelectedItem = gridView1.GetFocusedRowCellValue(gridView1.Columns["trangThai"]);
+        }
+
+        private void gridView2_FocusedRowLoaded(object sender, DevExpress.XtraGrid.Views.Base.RowEventArgs e)
+        {
+
+        }
+
+        private void textBox_ChiTieNhapHang_ThanhTien_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_ChiTieNhapHang_ThanhTien.Text == null || textBox_ChiTieNhapHang_ThanhTien.Text == "") return;
+            textBox_ChiTieNhapHang_ThanhTien.Text = Program.formatCurrency(textBox_ChiTieNhapHang_ThanhTien.Text);
         }
     }
 }

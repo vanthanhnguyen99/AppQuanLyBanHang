@@ -32,6 +32,8 @@ namespace QLBH_API.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_HangHoa));
             this.groupBox_input = new System.Windows.Forms.GroupBox();
+            this.textBox_GiaNhap = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_Gia = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,8 +62,6 @@ namespace QLBH_API.Forms
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox_GiaNhap = new System.Windows.Forms.TextBox();
             this.groupBox_input.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_anh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_HangHoa)).BeginInit();
@@ -93,6 +93,25 @@ namespace QLBH_API.Forms
             this.groupBox_input.TabStop = false;
             this.groupBox_input.Text = "Hàng hóa";
             // 
+            // textBox_GiaNhap
+            // 
+            this.textBox_GiaNhap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_GiaNhap.Location = new System.Drawing.Point(847, 136);
+            this.textBox_GiaNhap.Name = "textBox_GiaNhap";
+            this.textBox_GiaNhap.Size = new System.Drawing.Size(195, 21);
+            this.textBox_GiaNhap.TabIndex = 14;
+            this.textBox_GiaNhap.TextChanged += new System.EventHandler(this.textBox_GiaNhap_TextChanged);
+            this.textBox_GiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_GiaNhap_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(773, 144);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Giá nhập";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -108,6 +127,8 @@ namespace QLBH_API.Forms
             this.textBox_Gia.Name = "textBox_Gia";
             this.textBox_Gia.Size = new System.Drawing.Size(215, 21);
             this.textBox_Gia.TabIndex = 11;
+            this.textBox_Gia.TextChanged += new System.EventHandler(this.textBox_Gia_TextChanged);
+            this.textBox_Gia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Gia_KeyPress);
             // 
             // label4
             // 
@@ -365,23 +386,6 @@ namespace QLBH_API.Forms
             this.barDockControlRight.Location = new System.Drawing.Point(1234, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 658);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(773, 144);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Giá nhập";
-            // 
-            // textBox_GiaNhap
-            // 
-            this.textBox_GiaNhap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_GiaNhap.Location = new System.Drawing.Point(847, 136);
-            this.textBox_GiaNhap.Name = "textBox_GiaNhap";
-            this.textBox_GiaNhap.Size = new System.Drawing.Size(195, 21);
-            this.textBox_GiaNhap.TabIndex = 14;
             // 
             // Form_HangHoa
             // 

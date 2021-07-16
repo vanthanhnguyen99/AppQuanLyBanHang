@@ -67,6 +67,35 @@ namespace QLBH_API
             return head + num;
 
         }
+        public static string formatCurrency(string input)
+        {
+            decimal value;
+
+            try
+            {
+                value = Convert.ToDecimal(input);
+            }
+            catch (Exception ex)
+            {
+                return input;
+            }
+            var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+            return string.Format(info, "{0:c}", value);
+        }
+        public static decimal convertCurrencyToDecimal(string input)
+        {
+            var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+            decimal value;
+            try
+            {
+                value = decimal.Parse(input, System.Globalization.NumberStyles.Currency, info);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return value;
+        }
         [STAThread]
         static void Main()
         {

@@ -114,8 +114,8 @@ namespace QLBH_API.Services
                     e.Response.GetResponseStream()))
                 {
                     string responseContent = r.ReadToEnd();
-                    errorMessage = Errors.listError[responseContent];
                     errorCode = responseContent;
+                    errorMessage = Errors.listError[responseContent];
                     Console.WriteLine(errorMessage);
                     return false;
                 }

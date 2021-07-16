@@ -353,12 +353,12 @@ namespace QLBH_API.Forms
                     return;
                 }
                 else
-                if (Service_NhanVien.errorCode.Equals("5"))
+                if (Service_KhachHang.errorCode.Equals("5"))
                 {
                     MessageBox.Show("Không thể xóa mẫu tin này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                MessageBox.Show("Lỗi máy chủ, vui lòng thử lại sau", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Service_KhachHang.errorCode, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

@@ -148,6 +148,7 @@ namespace QLBH_API.Forms
             this.textBox_TongTien.Name = "textBox_TongTien";
             this.textBox_TongTien.Size = new System.Drawing.Size(171, 21);
             this.textBox_TongTien.TabIndex = 9;
+            this.textBox_TongTien.TextChanged += new System.EventHandler(this.textBox_TongTien_TextChanged);
             // 
             // textBox_NhanVien
             // 
@@ -276,6 +277,7 @@ namespace QLBH_API.Forms
             this.textBox_ChiTieNhapHang_ThanhTien.Name = "textBox_ChiTieNhapHang_ThanhTien";
             this.textBox_ChiTieNhapHang_ThanhTien.Size = new System.Drawing.Size(182, 21);
             this.textBox_ChiTieNhapHang_ThanhTien.TabIndex = 10;
+            this.textBox_ChiTieNhapHang_ThanhTien.TextChanged += new System.EventHandler(this.textBox_ChiTieNhapHang_ThanhTien_TextChanged);
             // 
             // textBox_ChiTieNhapHang_IDPhieuNhap
             // 

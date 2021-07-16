@@ -2,6 +2,7 @@
 using QLBH_API.Entity;
 using QLBH_API.Form;
 using QLBH_API.Services;
+using QLBH_API.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,7 +42,7 @@ namespace QLBH_API.Forms
             groupBox_ChiTietNhapHang.Enabled = false;
 
             loadToTablePhieuNhapHang();
-
+            comboBox_ChiTieNhapHang_TenHangHoa.SelectedItem = gridView2.GetFocusedRowCellValue(gridView2.Columns["idhh"]).ToString();
 
             if (listHangHoa == null)
             {
@@ -157,7 +158,7 @@ namespace QLBH_API.Forms
 
         private void gridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gridView2.GetFocusedRowCellValue(gridView2.Columns["id"]) == null)
+            if (gridView2.GetFocusedRowCellValue(gridView2.Columns["id"]) == null || gridView2.GetFocusedRowCellValue(gridView2.Columns["id"]).ToString() == "")
             {
                 if (isEdit)
                 {
@@ -175,7 +176,7 @@ namespace QLBH_API.Forms
             if (isEdit) textBox_ChiTietNhapHang_ID.Text = gridView2.GetFocusedRowCellValue(gridView2.Columns["id"]).ToString();
             numericUpDown1.Value = Decimal.Parse(gridView2.GetFocusedRowCellValue(gridView2.Columns["soLuong"]).ToString());
             textBox_ChiTieNhapHang_ThanhTien.Text = gridView2.GetFocusedRowCellValue(gridView2.Columns["thanhTien"]).ToString();
-            textBox_ChiTieNhapHang_IDPhieuNhap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
+            textBox_ChiTieNhapHang_IDPhieuNhap.Text = textBox_ID.Text;
         }
 
         private void comboBox_ChiTieNhapHang_TenHangHoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,8 +302,7 @@ namespace QLBH_API.Forms
 
             gridView2.AddNewRow();
             List<CtNhapHang> ctNhapHangs = new Service_ChiTietPhieuNhapHang().getListChiTietNhapHang();
-  
-            if (gridView2.RowCount > 1)
+            if (ctNhapHangs.Count > 0)
                 textBox_ChiTietNhapHang_ID.Text = Program.generateID(ctNhapHangs[ctNhapHangs.Count-1].id);
             else textBox_ChiTietNhapHang_ID.Text = "CTNH001";
             //MessageBox.Show(Program.generateID(ctNhapHangs[ctNhapHangs.Count - 1].id));
@@ -320,12 +320,12 @@ namespace QLBH_API.Forms
             gridControl_ChiTietNhapHang.Enabled = false;
             groupBox_ChiTietNhapHang.Enabled = true;
 
-            //textBox_ChiTieNhapHang_IDPhieuNhap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
+            textBox_ChiTieNhapHang_IDPhieuNhap.Text = gridView1.GetFocusedRowCellValue(gridView1.Columns["id"]).ToString();
 
 
-           
 
-            
+
+
         }
 
         private void barButtonItem_ChiTietNhapHang_Sua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -382,7 +382,44 @@ namespace QLBH_API.Forms
                     MessageBox.Show(Service_ChiTietPhieuNhapHang.errorMessage, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                // Cập nhật lại giá
+                //MessageBox.Show(gridView1.GetFocusedRowCellValue(gridView1.Columns["tongTien"]).ToString());
+                int tong = int.Parse(gridView1.GetFocusedRowCellValue(gridView1.Columns["tongTien"]).ToString());
+                tong = tong - Convert.ToInt32(Program.convertCurrencyToDecimal(textBox_ChiTieNhapHang_ThanhTien.Text));
+
+                PhieuNhapHang phieuNhapHang = new PhieuNhapHang();
+                phieuNhapHang.id = textBox_ID.Text;
+                phieuNhapHang.ngayLap = textBox_NgayLap.Text;
+                phieuNhapHang.tongTien = tong;
+                phieuNhapHang.idNV = Form_Login.username.ToUpper();
+
+                if (!new Service_PhieuNhapHang().updatePhieuNhapHang(phieuNhapHang))
+                {
+                    MessageBox.Show("Lỗi kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                textBox_TongTien.Text = tong.ToString();
+                NhanVien nhanVien = new Service_NhanVien().getNhanVien(Form_Login.username);
+                textBox_NhanVien.Text = nhanVien.id.ToUpper();
+                textBox_HoTen.Text = nhanVien.hoTen;
+
+                // refresh data
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["tongTien"], tong.ToString());
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["idNV"], textBox_NhanVien.Text.ToUpper());
+
                 gridView2.DeleteSelectedRows();
+                gridView2.RefreshData();
+
+                barButtonItem_NhapHang_Them.Enabled = true;
+                barButtonItem_PhieuNhapHang_Xoa.Enabled = (gridView1.RowCount > 0);
+                barButtonItem_ChiTietNhapHang_Them.Enabled = true;
+                barButtonItem_ChiTietNhapHang_Xoa.Enabled = (gridView2.RowCount > 0);
+                barButtonItem_ChiTietNhapHang_Sua.Enabled = (gridView2.RowCount > 0);
+                barButtonItem_ChiTietNhapHang_Ghi.Enabled = false;
+                barButtonItem_ChiTietNhapHang_Thoat.Enabled = false;
+
+                gridControl_ChiTietNhapHang.Enabled = true;
+                groupBox_ChiTietNhapHang.Enabled = false;
             }
         }
 
@@ -395,12 +432,25 @@ namespace QLBH_API.Forms
                 // add lại
                 for (int i = 0; i < gridView2.RowCount-1; i++)
                 {
-                    string id = (gridView2.GetRowCellDisplayText(i, gridView2.Columns["idhh"]));
+                    string id = (gridView2.GetRowCellDisplayText(i, gridView2.Columns["idhh"])).ToString();
 
                     listHangHoa.Add(new Service_HangHoa().getHangHoa(id));
                 }
 
                 gridView2.DeleteSelectedRows();
+
+                if (gridView2.RowCount == 0)
+                {
+                  
+                    {
+                        textBox_ChiTieNhapHang_IDPhieuNhap.Text = "";
+                    }
+                    textBox_ChiTieNhapHang_ThanhTien.Text = "";
+                    textBox_ChiTietNhapHang_ID.Text = "";
+                    textBox_ChiTietNhapHang_IDHH.Text = "";
+                    comboBox_ChiTieNhapHang_TenHangHoa.SelectedIndex = 0;
+                    numericUpDown1.Value = 0;
+                }
             }
             else
             {
@@ -415,13 +465,15 @@ namespace QLBH_API.Forms
             barButtonItem_PhieuNhapHang_Xoa.Enabled = true;
             barButtonItem_ChiTietNhapHang_Them.Enabled = true;
             barButtonItem_ChiTietNhapHang_Xoa.Enabled = (gridView2.RowCount > 0);
-            barButtonItem_ChiTietNhapHang_Sua.Enabled = true;
+            barButtonItem_ChiTietNhapHang_Sua.Enabled = (gridView2.RowCount > 0);
             barButtonItem_ChiTietNhapHang_Ghi.Enabled = false;
             barButtonItem_ChiTietNhapHang_Thoat.Enabled = false;
 
             gridControl_ChiTietNhapHang.Enabled = true;
             groupBox_ChiTietNhapHang.Enabled = false;
             isEdit = true;
+
+            gridView2.RefreshData();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -452,7 +504,7 @@ namespace QLBH_API.Forms
             CtNhapHang ctNhapHang = new CtNhapHang();
             ctNhapHang.id = textBox_ChiTietNhapHang_ID.Text;
             ctNhapHang.soLuong = (int)numericUpDown1.Value;
-            ctNhapHang.thanhTien = int.Parse(textBox_ChiTieNhapHang_ThanhTien.Text);
+            ctNhapHang.thanhTien = Convert.ToInt32(Program.convertCurrencyToDecimal(textBox_ChiTieNhapHang_ThanhTien.Text));
             ctNhapHang.idhh = textBox_ChiTietNhapHang_IDHH.Text;
             ctNhapHang.idPhieuNhapHang = textBox_ChiTieNhapHang_IDPhieuNhap.Text;
 
@@ -465,7 +517,7 @@ namespace QLBH_API.Forms
                 }
 
                 // add lại
-                for (int i = 0; i < gridView2.RowCount; i++)
+                for (int i = 0; i < gridView2.RowCount-1; i++)
                 {
                     string id = (gridView2.GetRowCellDisplayText(i, gridView2.Columns["idhh"]));
 
@@ -496,7 +548,7 @@ namespace QLBH_API.Forms
             {
                 tong = tong + int.Parse(gridView2.GetRowCellDisplayText(i, gridView2.Columns["thanhTien"]));
             }
-            tong = tong + int.Parse(textBox_ChiTieNhapHang_ThanhTien.Text);
+            tong = tong + Convert.ToInt32( Program.convertCurrencyToDecimal(textBox_ChiTieNhapHang_ThanhTien.Text));
 
             PhieuNhapHang phieuNhapHang = new PhieuNhapHang();
             phieuNhapHang.id = textBox_ID.Text;
@@ -516,12 +568,12 @@ namespace QLBH_API.Forms
             // Hiển thị data mới
             gridView2.SetFocusedRowCellValue(gridView2.Columns["id"], textBox_ChiTietNhapHang_ID.Text);
             gridView2.SetFocusedRowCellValue(gridView2.Columns["soLuong"], numericUpDown1.Value.ToString());
-            gridView2.SetFocusedRowCellValue(gridView2.Columns["thanhTien"], textBox_ChiTieNhapHang_ThanhTien.Text);
+            gridView2.SetFocusedRowCellValue(gridView2.Columns["thanhTien"], Convert.ToInt32(Program.convertCurrencyToDecimal(textBox_ChiTieNhapHang_ThanhTien.Text)).ToString());
             gridView2.SetFocusedRowCellValue(gridView2.Columns["idhh"], textBox_ChiTietNhapHang_IDHH.Text);
             gridView2.SetFocusedRowCellValue(gridView2.Columns["idPhieuNhapHang"], textBox_ChiTieNhapHang_IDPhieuNhap.Text);
 
 
-            gridView1.SetFocusedRowCellValue(gridView1.Columns["tongTien"], textBox_TongTien.Text);
+            gridView1.SetFocusedRowCellValue(gridView1.Columns["tongTien"],tong.ToString());
             gridView1.SetFocusedRowCellValue(gridView1.Columns["idNV"], textBox_NhanVien.Text.ToUpper());
 
             // Hiển thị lại button
@@ -538,6 +590,18 @@ namespace QLBH_API.Forms
             groupBox_ChiTietNhapHang.Enabled = false;
 
             isEdit = true;
+        }
+
+        private void textBox_TongTien_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_TongTien.Text == null || textBox_TongTien.Text == "") return;
+            textBox_TongTien.Text = Program.formatCurrency(textBox_TongTien.Text);
+        }
+
+        private void textBox_ChiTieNhapHang_ThanhTien_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_ChiTieNhapHang_ThanhTien.Text == null || textBox_ChiTieNhapHang_ThanhTien.Text == "") return;
+            textBox_ChiTieNhapHang_ThanhTien.Text = Program.formatCurrency(textBox_ChiTieNhapHang_ThanhTien.Text);
         }
     }
 }

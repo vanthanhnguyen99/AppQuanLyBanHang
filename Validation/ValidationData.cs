@@ -37,9 +37,11 @@ namespace QLBH_API.Validation
         }
         public static bool checkSoDuong(string number)
         {
+            
             try
             {
-                Int64.Parse(number);
+                
+                if (Int64.Parse(number) <= 0) return false;
                 return true;
             }
             catch (Exception e)

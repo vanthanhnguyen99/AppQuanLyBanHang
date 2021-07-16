@@ -109,3 +109,15 @@ C:\C#\QLBH_API\QLBH_API\bin\Debug\ru\DevExpress.XtraNavBar.v19.2.resources.dll
 C:\C#\QLBH_API\QLBH_API\obj\Debug\QLBH_API.Forms.Form_KhachHang.resources
 C:\C#\QLBH_API\QLBH_API\obj\Debug\QLBH_API.Forms.Form_NhapHang.resources
 C:\C#\QLBH_API\QLBH_API\obj\Debug\QLBH_API.Forms.Form_DatHang.resources
+C:\C#\QLBH_API\QLBH_API\bin\Debug\DevExpress.XtraScheduler.v19.2.Core.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\DevExpress.XtraScheduler.v19.2.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\DevExpress.XtraScheduler.v19.2.xml
+C:\C#\QLBH_API\QLBH_API\bin\Debug\DevExpress.XtraScheduler.v19.2.Core.xml
+C:\C#\QLBH_API\QLBH_API\bin\Debug\de\DevExpress.XtraScheduler.v19.2.resources.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\es\DevExpress.XtraScheduler.v19.2.resources.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\ja\DevExpress.XtraScheduler.v19.2.resources.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\ru\DevExpress.XtraScheduler.v19.2.resources.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\de\DevExpress.XtraScheduler.v19.2.Core.resources.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\es\DevExpress.XtraScheduler.v19.2.Core.resources.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\ja\DevExpress.XtraScheduler.v19.2.Core.resources.dll
+C:\C#\QLBH_API\QLBH_API\bin\Debug\ru\DevExpress.XtraScheduler.v19.2.Core.resources.dll

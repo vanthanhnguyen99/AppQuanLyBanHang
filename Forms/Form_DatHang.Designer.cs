@@ -36,6 +36,12 @@ namespace QLBH_API.Forms
             this.gridControl_ChiTietDatHang = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupBox_PhieDatHang = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox_TenKH = new System.Windows.Forms.TextBox();
+            this.textBox_IDKH = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox_TrangThai = new System.Windows.Forms.ComboBox();
             this.textBox_TongTien = new System.Windows.Forms.TextBox();
             this.textBox_NhanVien = new System.Windows.Forms.TextBox();
             this.textBox_HoTen = new System.Windows.Forms.TextBox();
@@ -47,6 +53,7 @@ namespace QLBH_API.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox_ChiTietDatHang = new System.Windows.Forms.GroupBox();
+            this.textBox_TenHangHoa = new System.Windows.Forms.TextBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.textBox_ChiTietNhapHang_IDHH = new System.Windows.Forms.TextBox();
             this.textBox_ChiTieNhapHang_ThanhTien = new System.Windows.Forms.TextBox();
@@ -59,27 +66,20 @@ namespace QLBH_API.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem_Sua = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_Ghi = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_Thoat = new DevExpress.XtraBars.BarButtonItem();
+            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem_Sua = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem_Ghi = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem_Thoat = new DevExpress.XtraBars.BarButtonItem();
-            this.textBox_TenHangHoa = new System.Windows.Forms.TextBox();
-            this.comboBox_TrangThai = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox_IDKH = new System.Windows.Forms.TextBox();
-            this.textBox_TenKH = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_PhieuDatHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_ChiTietDatHang)).BeginInit();
@@ -121,6 +121,7 @@ namespace QLBH_API.Forms
             this.gridView2.GridControl = this.gridControl_ChiTietDatHang;
             this.gridView2.Name = "gridView2";
             this.gridView2.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView2_FocusedRowChanged);
+            this.gridView2.FocusedRowLoaded += new DevExpress.XtraGrid.Views.Base.RowEventHandler(this.gridView2_FocusedRowLoaded);
             // 
             // groupBox_PhieDatHang
             // 
@@ -146,6 +147,63 @@ namespace QLBH_API.Forms
             this.groupBox_PhieDatHang.TabIndex = 4;
             this.groupBox_PhieDatHang.TabStop = false;
             this.groupBox_PhieDatHang.Text = "Thông tin phiếu nhập hàng";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(641, 103);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 13);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Họ tên";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(411, 103);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 13);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "Khách hàng";
+            // 
+            // textBox_TenKH
+            // 
+            this.textBox_TenKH.Location = new System.Drawing.Point(703, 95);
+            this.textBox_TenKH.Name = "textBox_TenKH";
+            this.textBox_TenKH.ReadOnly = true;
+            this.textBox_TenKH.Size = new System.Drawing.Size(124, 21);
+            this.textBox_TenKH.TabIndex = 13;
+            // 
+            // textBox_IDKH
+            // 
+            this.textBox_IDKH.Location = new System.Drawing.Point(480, 100);
+            this.textBox_IDKH.Name = "textBox_IDKH";
+            this.textBox_IDKH.ReadOnly = true;
+            this.textBox_IDKH.Size = new System.Drawing.Size(131, 21);
+            this.textBox_IDKH.TabIndex = 12;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(641, 41);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Trạng thái";
+            // 
+            // comboBox_TrangThai
+            // 
+            this.comboBox_TrangThai.FormattingEnabled = true;
+            this.comboBox_TrangThai.Items.AddRange(new object[] {
+            "Hủy đơn",
+            "Chờ xác nhận",
+            "Xác nhận và giao hàng",
+            "Hoàn thành",
+            "Giao hàng thất bại"});
+            this.comboBox_TrangThai.Location = new System.Drawing.Point(703, 36);
+            this.comboBox_TrangThai.Name = "comboBox_TrangThai";
+            this.comboBox_TrangThai.Size = new System.Drawing.Size(124, 21);
+            this.comboBox_TrangThai.TabIndex = 10;
             // 
             // textBox_TongTien
             // 
@@ -254,6 +312,13 @@ namespace QLBH_API.Forms
             this.groupBox_ChiTietDatHang.TabStop = false;
             this.groupBox_ChiTietDatHang.Text = "Thông tin chi tiết phiếu nhập hàng";
             // 
+            // textBox_TenHangHoa
+            // 
+            this.textBox_TenHangHoa.Location = new System.Drawing.Point(427, 126);
+            this.textBox_TenHangHoa.Name = "textBox_TenHangHoa";
+            this.textBox_TenHangHoa.Size = new System.Drawing.Size(182, 21);
+            this.textBox_TenHangHoa.TabIndex = 13;
+            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(427, 56);
@@ -276,6 +341,7 @@ namespace QLBH_API.Forms
             this.textBox_ChiTieNhapHang_ThanhTien.Name = "textBox_ChiTieNhapHang_ThanhTien";
             this.textBox_ChiTieNhapHang_ThanhTien.Size = new System.Drawing.Size(182, 21);
             this.textBox_ChiTieNhapHang_ThanhTien.TabIndex = 10;
+            this.textBox_ChiTieNhapHang_ThanhTien.TextChanged += new System.EventHandler(this.textBox_ChiTieNhapHang_ThanhTien_TextChanged);
             // 
             // textBox_ChiTieNhapHang_IDPhieuNhap
             // 
@@ -370,6 +436,62 @@ namespace QLBH_API.Forms
             this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
+            // bar2
+            // 
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Sua),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Ghi),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Thoat)});
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "Main menu";
+            // 
+            // barButtonItem_Sua
+            // 
+            this.barButtonItem_Sua.Caption = "Sửa";
+            this.barButtonItem_Sua.Id = 5;
+            this.barButtonItem_Sua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Sua.ImageOptions.Image")));
+            this.barButtonItem_Sua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Sua.ImageOptions.LargeImage")));
+            this.barButtonItem_Sua.Name = "barButtonItem_Sua";
+            this.barButtonItem_Sua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_Sua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Sua_ItemClick);
+            // 
+            // barButtonItem_Ghi
+            // 
+            this.barButtonItem_Ghi.Caption = "Ghi";
+            this.barButtonItem_Ghi.Id = 6;
+            this.barButtonItem_Ghi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Ghi.ImageOptions.Image")));
+            this.barButtonItem_Ghi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Ghi.ImageOptions.LargeImage")));
+            this.barButtonItem_Ghi.Name = "barButtonItem_Ghi";
+            this.barButtonItem_Ghi.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_Ghi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Ghi_ItemClick);
+            // 
+            // barButtonItem_Thoat
+            // 
+            this.barButtonItem_Thoat.Caption = "Thoát";
+            this.barButtonItem_Thoat.Id = 7;
+            this.barButtonItem_Thoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Thoat.ImageOptions.Image")));
+            this.barButtonItem_Thoat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Thoat.ImageOptions.LargeImage")));
+            this.barButtonItem_Thoat.Name = "barButtonItem_Thoat";
+            this.barButtonItem_Thoat.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Thoat_ItemClick);
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -401,30 +523,6 @@ namespace QLBH_API.Forms
             this.barDockControlRight.Location = new System.Drawing.Point(1918, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 658);
-            // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Sua),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Ghi),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Thoat)});
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
             // 
             // barButtonItem1
             // 
@@ -460,99 +558,6 @@ namespace QLBH_API.Forms
             this.barButtonItem5.Enabled = false;
             this.barButtonItem5.Id = 4;
             this.barButtonItem5.Name = "barButtonItem5";
-            // 
-            // barButtonItem_Sua
-            // 
-            this.barButtonItem_Sua.Caption = "Sửa";
-            this.barButtonItem_Sua.Id = 5;
-            this.barButtonItem_Sua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Sua.ImageOptions.Image")));
-            this.barButtonItem_Sua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Sua.ImageOptions.LargeImage")));
-            this.barButtonItem_Sua.Name = "barButtonItem_Sua";
-            this.barButtonItem_Sua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem_Sua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Sua_ItemClick);
-            // 
-            // barButtonItem_Ghi
-            // 
-            this.barButtonItem_Ghi.Caption = "Ghi";
-            this.barButtonItem_Ghi.Id = 6;
-            this.barButtonItem_Ghi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Ghi.ImageOptions.Image")));
-            this.barButtonItem_Ghi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Ghi.ImageOptions.LargeImage")));
-            this.barButtonItem_Ghi.Name = "barButtonItem_Ghi";
-            this.barButtonItem_Ghi.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem_Ghi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Ghi_ItemClick);
-            // 
-            // barButtonItem_Thoat
-            // 
-            this.barButtonItem_Thoat.Caption = "Thoát";
-            this.barButtonItem_Thoat.Id = 7;
-            this.barButtonItem_Thoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Thoat.ImageOptions.Image")));
-            this.barButtonItem_Thoat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Thoat.ImageOptions.LargeImage")));
-            this.barButtonItem_Thoat.Name = "barButtonItem_Thoat";
-            this.barButtonItem_Thoat.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Thoat_ItemClick);
-            // 
-            // textBox_TenHangHoa
-            // 
-            this.textBox_TenHangHoa.Location = new System.Drawing.Point(427, 126);
-            this.textBox_TenHangHoa.Name = "textBox_TenHangHoa";
-            this.textBox_TenHangHoa.Size = new System.Drawing.Size(182, 21);
-            this.textBox_TenHangHoa.TabIndex = 13;
-            // 
-            // comboBox_TrangThai
-            // 
-            this.comboBox_TrangThai.FormattingEnabled = true;
-            this.comboBox_TrangThai.Items.AddRange(new object[] {
-            "Hủy đơn",
-            "Chờ xác nhận",
-            "Xác nhận và giao hàng",
-            "Hoàn thành"});
-            this.comboBox_TrangThai.Location = new System.Drawing.Point(703, 36);
-            this.comboBox_TrangThai.Name = "comboBox_TrangThai";
-            this.comboBox_TrangThai.Size = new System.Drawing.Size(124, 21);
-            this.comboBox_TrangThai.TabIndex = 10;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(641, 41);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(56, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Trạng thái";
-            // 
-            // textBox_IDKH
-            // 
-            this.textBox_IDKH.Location = new System.Drawing.Point(480, 100);
-            this.textBox_IDKH.Name = "textBox_IDKH";
-            this.textBox_IDKH.ReadOnly = true;
-            this.textBox_IDKH.Size = new System.Drawing.Size(131, 21);
-            this.textBox_IDKH.TabIndex = 12;
-            // 
-            // textBox_TenKH
-            // 
-            this.textBox_TenKH.Location = new System.Drawing.Point(703, 95);
-            this.textBox_TenKH.Name = "textBox_TenKH";
-            this.textBox_TenKH.ReadOnly = true;
-            this.textBox_TenKH.Size = new System.Drawing.Size(124, 21);
-            this.textBox_TenKH.TabIndex = 13;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(411, 103);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 13);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Khách hàng";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(641, 103);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 13);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Họ tên";
             // 
             // Form_DatHang
             // 

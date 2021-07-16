@@ -153,6 +153,7 @@ namespace QLBH_API.Forms
 
         private void barButtonItem_Them_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            hangHoaEdit = new HangHoa();
             isEdit = false;
 
             barButtonItem_Them.Enabled = false;
@@ -218,12 +219,12 @@ namespace QLBH_API.Forms
                 MessageBox.Show("Vui lòng không để trống khối lượng hoặc cần nhập đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (textBox_Gia.Text.Trim().Length == 0 || !ValidationData.checkSoDuong(textBox_Gia.Text.Trim()))
+            if (textBox_Gia.Text.Trim().Length == 0 || !ValidationData.checkSoDuong(Convert.ToInt32(Program.convertCurrencyToDecimal(textBox_Gia.Text)).ToString()))
             {
                 MessageBox.Show("Vui lòng không để trống giá niêm yết hoặc cần nhập đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (textBox_GiaNhap.Text.Trim().Length == 0 || !ValidationData.checkSoDuong(textBox_GiaNhap.Text.Trim()))
+            if (textBox_GiaNhap.Text.Trim().Length == 0 || !ValidationData.checkSoDuong(Convert.ToInt32(Program.convertCurrencyToDecimal(textBox_GiaNhap.Text)).ToString()))
             {
                 MessageBox.Show("Vui lòng không để trống giá nhập hàng hoặc cần nhập đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -239,8 +240,8 @@ namespace QLBH_API.Forms
                 return;
             }
 
-            Int64 gia = Int64.Parse(textBox_Gia.Text.Trim());
-            int giaNhap = int.Parse(textBox_GiaNhap.Text.Trim());
+            Int64 gia = Convert.ToInt64(Program.convertCurrencyToDecimal(textBox_Gia.Text));
+            int giaNhap = Convert.ToInt32(Program.convertCurrencyToDecimal(textBox_GiaNhap.Text));
             if (!isEdit) // Thêm
             {
                 // save data
@@ -272,23 +273,8 @@ namespace QLBH_API.Forms
                         case "1":
                             {
                                 MessageBox.Show("Lỗi khóa chính. Vui lòng thử lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                int soluong = new Service_HangHoa().getListHangHoa().Count;
-                                if (soluong < 10)
-                                {
-                                    textBox_ID.Text = "HH00" + soluong;
-                                }
-                                else
-                                {
-                                    if (soluong < 100)
-                                    {
-                                        textBox_ID.Text = "HH0" + soluong;
-                                    }
-                                    else
-                                    {
-                                        textBox_ID.Text = "HH" + soluong;
-                                    }
-                                }
-                                hangHoaEdit.id = textBox_ID.Text;
+                                List<HangHoa> hangHoas = new Service_HangHoa().getListHangHoa();
+                                textBox_ID.Text = Program.generateID(hangHoas[hangHoas.Count - 1].id);
 
                                 return;
                             }
@@ -341,6 +327,11 @@ namespace QLBH_API.Forms
                     }
                     return;
                 }
+
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["khoiLuong"], hangHoaEdit.khoiLuong);
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["ten"], hangHoaEdit.ten);
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["moTa"], hangHoaEdit.moTa);
+                gridView1.SetFocusedRowCellValue(gridView1.Columns["anh"], hangHoaEdit.anh);
             }
             else  //Sửa
             {
@@ -596,7 +587,51 @@ namespace QLBH_API.Forms
             textBox_KhoiLuong.Text = textBox_KhoiLuong.Text.Trim();
         }
 
-      
+        private void textBox_Gia_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_Gia.Text == null || textBox_Gia.Text == null) return;
+            textBox_Gia.Text = Program.formatCurrency(textBox_Gia.Text);
+            decimal value = Program.convertCurrencyToDecimal(textBox_Gia.Text);
+            textBox_Gia.Text = Program.formatCurrency(value.ToString());
+            if(textBox_Gia.Text.Length >= 6) textBox_Gia.SelectionStart = textBox_Gia.Text.Length - 6;
+        }
 
+        private void textBox_Gia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+           
+        }
+
+        private void textBox_GiaNhap_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_GiaNhap.Text == null || textBox_GiaNhap.Text == null) return;
+            textBox_GiaNhap.Text = Program.formatCurrency(textBox_GiaNhap.Text);
+            decimal value = Program.convertCurrencyToDecimal(textBox_GiaNhap.Text);
+            textBox_GiaNhap.Text = Program.formatCurrency(value.ToString());
+            if (textBox_GiaNhap.Text.Length >= 6) textBox_GiaNhap.SelectionStart = textBox_GiaNhap.Text.Length - 6;
+        }
+
+        private void textBox_GiaNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
