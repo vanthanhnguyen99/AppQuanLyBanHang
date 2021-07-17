@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.DataAccess.Json;
+using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using QLBH_API.Entity;
 using QLBH_API.Services;
 using System;
@@ -34,9 +36,12 @@ namespace QLBH_API.Forms
             barButtonItem_Sua.Enabled = (gridView1.RowCount > 0);
             barButtonItem_Ghi.Enabled = false;
             barButtonItem_Thoat.Enabled = false;
+            barButtonItem_Xem.Enabled = (gridView1.RowCount > 0);
 
             gridControl_PhieuDatHang.Enabled = true;
             groupBox_PhieDatHang.Enabled = false;
+
+            
         }
         void loadToTablePhieuDatHang()
         {
@@ -174,8 +179,9 @@ namespace QLBH_API.Forms
             barButtonItem_Sua.Enabled = false;
             barButtonItem_Ghi.Enabled = true;
             barButtonItem_Thoat.Enabled = true;
+            barButtonItem_Xem.Enabled = false;
 
-            switch(gridView1.GetFocusedRowCellValue(gridView1.Columns["trangThai"]).ToString())
+            switch (gridView1.GetFocusedRowCellValue(gridView1.Columns["trangThai"]).ToString())
             {
                 case "Hủy đơn":
                     {
@@ -274,6 +280,7 @@ namespace QLBH_API.Forms
             barButtonItem_Sua.Enabled = true;
             barButtonItem_Ghi.Enabled = false;
             barButtonItem_Thoat.Enabled = false;
+            barButtonItem_Xem.Enabled = (gridView1.RowCount > 0);
 
             comboBox_TrangThai.Items.Clear();
             comboBox_TrangThai.Items.Add(list[0]);
@@ -292,6 +299,7 @@ namespace QLBH_API.Forms
             barButtonItem_Sua.Enabled = true;
             barButtonItem_Ghi.Enabled = false;
             barButtonItem_Thoat.Enabled = false;
+            barButtonItem_Xem.Enabled = (gridView1.RowCount > 0);
 
             comboBox_TrangThai.Items.Clear();
             comboBox_TrangThai.Items.Add(list[0]);
@@ -311,6 +319,18 @@ namespace QLBH_API.Forms
         {
             if (textBox_ChiTieNhapHang_ThanhTien.Text == null || textBox_ChiTieNhapHang_ThanhTien.Text == "") return;
             textBox_ChiTieNhapHang_ThanhTien.Text = Program.formatCurrency(textBox_ChiTieNhapHang_ThanhTien.Text);
+        }
+
+        private void barButtonItem_Xem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var datasource = new JsonDataSource();
+            datasource.JsonSource = new UriJsonSource(new Uri(Program.baseURL + string.Format("thongkedathang/" + textBox_ID.Text)));
+            datasource.Fill();
+            HoaDon hoaDon = new HoaDon("PDH003");
+            hoaDon.label_name.Text = "HÓA ĐƠN ĐƠN HÀNG " + textBox_ID.Text;
+            hoaDon.DataSource = datasource;
+            ReportPrintTool print = new ReportPrintTool(hoaDon);
+            print.ShowPreviewDialog();
         }
     }
 }

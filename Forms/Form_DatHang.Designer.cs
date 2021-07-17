@@ -80,6 +80,7 @@ namespace QLBH_API.Forms
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_Xem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_PhieuDatHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_ChiTietDatHang)).BeginInit();
@@ -431,9 +432,10 @@ namespace QLBH_API.Forms
             this.barButtonItem5,
             this.barButtonItem_Sua,
             this.barButtonItem_Ghi,
-            this.barButtonItem_Thoat});
+            this.barButtonItem_Thoat,
+            this.barButtonItem_Xem});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -445,7 +447,8 @@ namespace QLBH_API.Forms
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Sua),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Ghi),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Thoat)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Thoat),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Xem)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -559,6 +562,16 @@ namespace QLBH_API.Forms
             this.barButtonItem5.Id = 4;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
+            // barButtonItem_Xem
+            // 
+            this.barButtonItem_Xem.Caption = "Xem hóa đơn";
+            this.barButtonItem_Xem.Id = 8;
+            this.barButtonItem_Xem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Xem.ImageOptions.Image")));
+            this.barButtonItem_Xem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Xem.ImageOptions.LargeImage")));
+            this.barButtonItem_Xem.Name = "barButtonItem_Xem";
+            this.barButtonItem_Xem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem_Xem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Xem_ItemClick);
+            // 
             // Form_DatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -641,5 +654,6 @@ namespace QLBH_API.Forms
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox_TenKH;
         private System.Windows.Forms.TextBox textBox_IDKH;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_Xem;
     }
 }
