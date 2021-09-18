@@ -11,8 +11,6 @@ namespace QLBH_API.Forms
     {
         public HoaDon(string id)
         {
-            
-      
             InitializeComponent();
            
         }

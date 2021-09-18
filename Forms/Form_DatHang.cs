@@ -327,7 +327,7 @@ namespace QLBH_API.Forms
             datasource.JsonSource = new UriJsonSource(new Uri(Program.baseURL + string.Format("thongkedathang/" + textBox_ID.Text)));
             datasource.Fill();
             HoaDon hoaDon = new HoaDon("PDH003");
-            hoaDon.label_name.Text = "HÓA ĐƠN ĐƠN HÀNG " + textBox_ID.Text;
+            hoaDon.label_name.Text = "HÓA ĐƠN MUA HÀNG " + textBox_ID.Text;
             hoaDon.DataSource = datasource;
             ReportPrintTool print = new ReportPrintTool(hoaDon);
             print.ShowPreviewDialog();
